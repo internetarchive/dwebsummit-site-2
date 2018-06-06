@@ -1,0 +1,3 @@
+sitepackages
+*.pyc
+db.sqlite3
