@@ -28,6 +28,15 @@ If you make changes to the models, you'll need to create migrations and migrate 
 python ./dwebsummit/manage.py migrate
 ```
 
+### Directory structure
+
+`/` -- these are root files, not meant to be deployed with the application
+
+`/dwebsummit`  -- this is the application's root
+
+`/dwebsummit/dwebsummit` -- this is the primary django app, which contains settings
+
+
 
 ## Credits
 

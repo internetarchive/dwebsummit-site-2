@@ -4,8 +4,8 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-sys.path.insert(0, os.path.join(BASE_DIR, '..', 'sitepackages'))
-sys.path.insert(0, os.path.join(BASE_DIR, '..', 'dwebsummit'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'sitepackages'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'dwebsummit'))
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
