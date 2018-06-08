@@ -188,9 +188,9 @@ event_outline:
     - "<b>13:00</b><br>Tour of Archive"
   - cells:
     - ""
-    - "15:30-17:00<br>Afternoon Session II"
-    - "15:30-17:00<br>Afternoon Session II"
-    - "14:00-17:00<br>Informal Collaboration &amp; meeting"
+    - "<b>15:30-17:00</b><br>Afternoon Session II"
+    - "<b>15:30-17:00</b><br>Afternoon Session II"
+    - "<b>14:00-17:00</b><br>Informal Collaboration &amp; meeting"
   - cells:
     - ""
     - "<b>17:00-18:00</b><br>Sharing<br>In Courtyard"

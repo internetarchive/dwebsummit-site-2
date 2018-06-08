@@ -856,13 +856,23 @@ body.open-modal .main-body, body.open-modal footer, body.open-modal header  {
 section#sponsors {
   .lead-sponsors-grid {
     .box {
-      // padding: 1rem;
       margin-bottom: 2rem;
       display: block;
       text-align: center;
     }
     .sponsor-img {
       height: 13rem;
+      width: auto;
+    }
+  }
+  .sponsors-grid {
+    .box {
+      margin-bottom: 2rem;
+      display: block;
+      text-align: center;
+    }
+    .sponsor-img {
+      height: 7;
       width: auto;
     }
   }

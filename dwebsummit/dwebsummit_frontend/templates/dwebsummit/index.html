@@ -103,12 +103,12 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
     <div class="grid people full-list">
     {% for attendee in people %}
       <div class="small-col js-bio-unit">
-        <img src="{{attendee.image_url}}" />
+        <img src="{{attendee.image.thumbnail.url}}" />
         <div class="name">{{attendee.name}}</div>
         <div class="subtitle">{{attendee.subtitle}}</div>
         <div class="hidden-bio">
           <div>
-            <div class="modal-image"><img src="{{attendee.image_url}}" /></div>
+            <div class="modal-image"><img src="{{attendee.image.thumbnail.url}}" /></div>
             <div class="modal-name">{{attendee.name}}</div>
             <div class="modal-subtitle">{{attendee.subtitle}}</div>
             <div>{{attendee.bio|safe}}</div>
@@ -185,10 +185,19 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
   <section id="sponsors">
     <h2>Sponsors</h2>
     <div class="lead-sponsors-grid">
-      {% for sponsor in page.metadata.lead_sponsors %}
-        <div id="{{sponsor.id}}" class="sponsor lead box">
+      {% for sponsor in lead_sponsors %}
+        <div id="sponsor_{{sponsor.slug}}" class="sponsor lead box">
           <a href="{{sponsor.url}}">
-            <img class="sponsor-img" src="/static/{{sponsor.src}}" alt="{{sponsor.title}}" />
+            <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="sponsors-grid">
+      {% for sponsor in sponsors %}
+        <div id="sponsor_{{sponsor.slug}}" class="sponsor box">
+          <a href="{{sponsor.url}}">
+            <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
           </a>
         </div>
       {% endfor %}
