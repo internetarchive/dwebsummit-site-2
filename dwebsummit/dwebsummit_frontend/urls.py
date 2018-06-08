@@ -1,7 +1,6 @@
 import os
 from django.conf import settings
 from django.conf.urls import url
-from django.conf.urls.static import static
 
 from .views import WithDataTemplateView
 
@@ -51,10 +50,6 @@ def build_url_patterns_from_templates(urlpatterns):
 
 
 urlpatterns = []
-
-# Note, non-file-based patterns can be added here before the function call
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 build_url_patterns_from_templates(urlpatterns)

@@ -101,17 +101,17 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
     <h2>Coming to Dweb 2018</h2>
 
     <div class="grid people full-list">
-    {% for attendee in page.metadata.people %}
+    {% for attendee in people %}
       <div class="small-col js-bio-unit">
-        <img src="/static/img/people/{{attendee.image}}" />
+        <img src="{{attendee.image_url}}" />
         <div class="name">{{attendee.name}}</div>
         <div class="subtitle">{{attendee.subtitle}}</div>
         <div class="hidden-bio">
           <div>
-            <div class="modal-image" ><img src="/static/img/people/{{attendee.image}}" /></div>
+            <div class="modal-image"><img src="{{attendee.image_url}}" /></div>
             <div class="modal-name">{{attendee.name}}</div>
             <div class="modal-subtitle">{{attendee.subtitle}}</div>
-            <div>{{attendee.bio}}</div>
+            <div>{{attendee.bio|safe}}</div>
           </div>
         </div>
       </div>

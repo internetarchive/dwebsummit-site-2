@@ -7,6 +7,8 @@ import yaml
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from dwebsummit_admin.models import Person
+
 
 with open(os.path.join(os.path.dirname(__file__), 'contents.yml'), 'r') as stream:
     yaml_contents = yaml.load(stream)
@@ -33,8 +35,9 @@ class WithDataTemplateView(TemplateView):
 
         # Data from the yaml file
         context['page'] = {
-            'metadata': yaml_contents 
+            'metadata': yaml_contents
         }
 
-        # TODO add access to models
+        context['people'] = Person.objects.all().order_by('first_name')
+
         return context

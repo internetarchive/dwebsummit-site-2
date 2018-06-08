@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'dwebsummit_admin',
     'dwebsummit_frontend',
 ]
@@ -48,6 +49,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dwebsummit.urls'
+APPEND_SLASH = True
 
 TEMPLATES = [
     {
@@ -117,15 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -133,5 +130,40 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
+MEDIA_URL = '/media/'
 
-APPEND_SLASH = True
+
+
+# TINY MCE RTE config
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 800,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'advanced',
+    'plugins': '',
+    # 'plugins': '''
+    #         textcolor save link image media preview codesample contextmenu
+    #         table code lists fullscreen  insertdatetime  nonbreaking
+    #         contextmenu directionality searchreplace wordcount visualblocks
+    #         visualchars code fullscreen autolink lists  charmap print  hr
+    #         anchor pagebreak
+    #         ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link media | codesample |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code |
+            ''',
+    # 'contextmenu': 'formats | link image',
+    # 'menubar': True,
+    # 'statusbar': True,
+}
