@@ -1,1 +1,90 @@
-What to expect
+{% extends 'dwebsummit/layout.html' %}
+
+{% block body %}
+<div class="narrower">
+  <section>
+    <div >
+      <h2>What to Expect</h2>
+      {{page.metadata.what_to_expect_body_text|safe}}
+    </div>
+  </section>
+</div>
+
+<div class="narrower">
+  <section>
+    <div>
+      <h2>Event Outline</h2>
+      <!-- Desktop table -->
+      <table class="event-outline-table hide-mobile">
+        <thead>
+          <tr>
+            {% for cell in page.metadata.event_outline[0].cells %}
+              <th scope="col">{{cell|safe}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in page.metadata.event_outline %}
+            {% if not loop.first %}
+              <tr>
+                {% for cell in row.cells %}
+                  <td>{{cell|safe}}</td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+      <!-- End Desktop table -->
+      <!-- Mobile -->
+      {% macro render_mobile_day(column_index) %}
+        <div class="event-outline-day-mobile">
+          <h3>{{page.metadata.event_outline[0].cells[column_index]|safe}}</h3>
+          <ul>
+          {% for row in page.metadata.event_outline %}
+            {% if not loop.first %}
+              {% for cell in row.cells %}
+                {% if loop.index0 == column_index and cell %}
+                  <li>{{cell|safe}}</li>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+          </ul>
+        </div>
+      {% endmacro %}
+      <div class="hide-desktop">
+        {{render_mobile_day(0)}}
+        {{render_mobile_day(1)}}
+        {{render_mobile_day(2)}}
+        {{render_mobile_day(3)}}
+      </div>
+      <!-- End Mobile -->
+    </div>
+  </section>
+</div>
+
+<div class="narrower">
+  <section>
+    QUESTIONS? Write to <a href="mailto:dwebsummit@archive.org">dwebsummit@archive.org</a><br>
+  </section>
+</div>
+
+
+<div class="row grey-row">
+  <section class="full pt-light" id="slideshow">
+    <div class="subheader">Photos from the 2016 Decentralized Web Summit</div>
+
+    {% include "dwebsummit/_slideshow.html" %}
+
+    <p>
+      More photos from the event are available
+      <a href="https://archive.org/details/DecentralizedWeb20160607Images">here</a>.
+      <br>
+      Also see the full <a href="https://2016.decentralizedweb.net">2016 Summit Website</a>.
+    </p>
+  </section>
+</div>
+
+
+{% endblock %}

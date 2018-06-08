@@ -1,0 +1,240 @@
+/* header */
+$bg_blue: #22313f;
+
+.header {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  width: 100%;
+  z-index: 3;
+  background-color: $bg_blue; //#eee;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  padding: 10px 20px;
+  text-decoration: none;
+  i {
+    position: relative;
+    top: 4px;
+    font-size: 2em;
+  }
+  z-index: 1;
+}
+
+.header-title {
+  color: white;
+  padding: 0 20px;
+  position:relative;
+  top: 18px;
+  .page-Home & {
+    display:none;
+  }
+}
+.header-title-desktop {
+  position:relative;
+  top: -8px;
+  margin-left:10px;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out, background .2s ease-out;
+  // background-color: $bg_blue;
+
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+  z-index:3;
+
+}
+
+.header .menu-icon .navicon {
+  background: #fff;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #fff;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 500px;
+  background-color: $bg_blue;
+  .page-Home & {
+    /* offset */
+    max-height: 565px;
+    position:relative;
+    top: -65px;
+    padding-top: 5px;
+    z-index: 2;
+  }
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+.page-Home .header {
+  // background-color: rgba( #22313f, .7 );
+  background-color: transparent;
+  position:absolute;
+  z-index:1000;
+  width:100%;
+  box-shadow: initial;
+
+  & .menu-icon .navicon,
+  & .menu-icon .navicon:before,
+  & .menu-icon .navicon:after {
+    background: #fff;
+  }
+}
+
+@media (min-width: $responsive_width) {
+  .header li {
+    float: left;
+  }
+
+  .header .menu {
+    clear: none;
+    // float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+  .header {
+    // height: $header_size;
+    background-color: $bg_blue; //#eee;
+    display: flex;
+    justify-content: space-between;
+    align-content:center;
+    box-shadow: initial;
+
+    .page-Home & {
+      box-shadow: initial;
+    }
+  }
+  .page-Home #header-wrapper {
+    position:absolute;
+    z-index:1000;
+    width:100%;
+  }
+  .page-Home header .logo {
+    // important to be visibility:hidden to not break flex layout
+    visibility: hidden;
+  }
+  .page-Home header {
+    // background-color: rgba(0,0,0,0.0);
+    background-color: transparent;
+    font-weight:bold;
+    // transition: background-color 0.75s linear;
+    // &:hover {
+      // background-color: rgba(0,0,0,0.75);
+    // }
+  }
+}
+
+
+
+/* header */
+// header {
+//   // background-color: #111;
+//   color: white;
+//   // padding:1rem 1rem 1rem 1rem;
+//   font-size: 1.5rem;
+//   // font-family: monospace;
+//   text-align:center;
+// }
+// header, footer {
+//
+// }
+header a {
+  color: #eee;
+  font-weight:lighter;
+  transition: color 0.125s linear;
+  &:hover {
+    color:#3fc380;
+  }
+  &:active {
+    color: lighten(#3fc380, 10%);
+  }
+}
+header .home-link {
+  // font-weight: 800;
+}
+
+@media only screen and (min-width: $responsive_width) {
+  .header {
+    height: $header_size;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header li {
+    padding: 0;
+  }
+}

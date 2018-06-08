@@ -51,6 +51,16 @@ ROOT_URLCONF = 'dwebsummit.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'dwebsummit_frontend', 'templates')
+        ],
+        'APP_DIRS': False,
+        'OPTIONS': {
+            'environment': 'dwebsummit.settings.environment'
+        },
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
@@ -65,6 +75,13 @@ TEMPLATES = [
     },
 ]
 
+from jinja2 import Environment
+
+def environment(**options):
+    env = Environment(**options)
+    return env
+
+
 WSGI_APPLICATION = 'dwebsummit.wsgi.application'
 
 
@@ -74,7 +91,7 @@ WSGI_APPLICATION = 'dwebsummit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '..', 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -114,7 +131,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
 STATIC_URL = '/static/'
 
 APPEND_SLASH = True

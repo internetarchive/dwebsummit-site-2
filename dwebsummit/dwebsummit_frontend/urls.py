@@ -1,5 +1,7 @@
 import os
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 
 from .views import WithDataTemplateView
 
@@ -28,12 +30,15 @@ def build_url(rootdir, root, file):
     parent = remove_prefix(root, rootdir).strip('/')
 
     if parent == '':
+        title = 'home'
         pattern = r'^$'
+        full_file = template_dir + '/' + file
     else:
+        title = parent.replace('/', '-')
         pattern = r'^' + parent + '/$'
+        full_file = template_dir + '/' + parent + '/' + file
 
-    full_file = template_dir + '/' + parent + '/' + file
-    view = WithDataTemplateView.as_view(template_name=full_file)
+    view = WithDataTemplateView.as_view(template_name=full_file, title=title)
     return url(pattern, view)
 
 
@@ -48,5 +53,8 @@ def build_url_patterns_from_templates(urlpatterns):
 urlpatterns = []
 
 # Note, non-file-based patterns can be added here before the function call
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 build_url_patterns_from_templates(urlpatterns)
