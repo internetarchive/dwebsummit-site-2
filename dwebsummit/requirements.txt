@@ -4,3 +4,4 @@ pyyaml==3.12
 Jinja2==2.10
 django-stdimage==2.4.2
 django-tinymce==2.7.0
+dj_database_url==0.4.1

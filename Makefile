@@ -11,7 +11,7 @@ build:
 	python dwebsummit/manage.py collectstatic
 
 makemigrations:
-	python dwebsummit/manage.py makemigrations 
+	python dwebsummit/manage.py makemigrations
 
 migrate:
 	# Update the database based on model changes

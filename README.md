@@ -56,6 +56,20 @@ rsync -av --delete --exclude={db.sqlite3,*.pyc,./dwebsummit/public/media/*} ./dw
 ```
 
 
+### Bootstrapping the server
+
+Some modules contain binary code and need to be compiled on the server itself.
+
+```
+ssh myserver
+cd path/to/dwebsummit
+pip install -t compiledpackages MySQL-python==1.2.5 pillowfight==0.3
+```
+
+Also do this in your local directory.
+
+
+
 ## Credits
 
 Internet Archive

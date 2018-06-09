@@ -1,4 +1,5 @@
 sitepackages
+compiledpackages
 *.pyc
 db.sqlite3
 /dwebsummit/public/static/*
@@ -6,3 +7,4 @@ db.sqlite3
 /dwebsummit/dwebsummit_frontend/static/css/main.css
 /dwebsummit/dwebsummit_frontend/static/css/main.css.map
 /upload.sh
+.env

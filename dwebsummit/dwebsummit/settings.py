@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
+from jinja2 import Environment
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,8 +80,6 @@ TEMPLATES = [
     },
 ]
 
-from jinja2 import Environment
-
 def environment(**options):
     env = Environment(**options)
     return env
@@ -90,11 +91,13 @@ WSGI_APPLICATION = 'dwebsummit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# NOTE dj_database_url reads the env var DATABASE_URL
+# MYSQL example: 'mysql://u:p@server.com/db_name'
+# SQLITE3 example: 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default='mysql://root:@localhost/dwebsummit'
+    )
 }
 
 

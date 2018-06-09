@@ -4,6 +4,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath('sitepackages'))
+sys.path.insert(0, os.path.abspath('compiledpackages'))
 sys.path.insert(0, os.path.abspath('dwebsummit'))
 
 from dotenv import load_dotenv, find_dotenv
