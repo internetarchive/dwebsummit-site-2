@@ -14,6 +14,7 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(Sponsor)
 class SponsorAdmin(admin.ModelAdmin):
+    list_display = ('title', 'url', 'type')
     pass
 
 
