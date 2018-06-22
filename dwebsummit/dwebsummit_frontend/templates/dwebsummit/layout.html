@@ -16,6 +16,8 @@
         {% if page.metadata.noindex %}
           <meta name="robots" content="noindex">
         {% endif %}
+
+        <script src="/static/js/vendor/cash.min.js"></script>
     </head>
     <body class="page-{{title}}">
 
@@ -28,5 +30,7 @@
         </div>
 
         {% include "dwebsummit/_footer.html" %}
+
+        <script src="/static/js/scripts.js" type="text/javascript"></script>
     </body>
 </html>
