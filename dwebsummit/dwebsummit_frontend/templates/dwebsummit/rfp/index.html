@@ -1,0 +1,12 @@
+{% extends 'dwebsummit/layout.html' %}
+
+{% block body %}
+<div class="narrower">
+  <section>
+    <div >
+      <h2>Request for presentations</h2>
+      {{text_fields.get(name='RFP page').value|safe}}
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -80,3 +80,15 @@ class Sponsor(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class TextField(models.Model):
+    class Meta:
+        verbose_name_plural = 'text fields'
+
+    name = models.CharField(max_length=100, blank=False, unique=True,
+                            db_index=True, editable=False)
+    value = HTMLField(blank=True, default='')
+
+    def __unicode__(self):
+        return self.name

@@ -7,7 +7,7 @@ import yaml
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from dwebsummit_admin.models import Person, Sponsor
+from dwebsummit_admin.models import Person, Sponsor, TextField
 
 
 with open(os.path.join(os.path.dirname(__file__), 'contents.yml'), 'r') as stream:
@@ -41,5 +41,7 @@ class WithDataTemplateView(TemplateView):
         context['people'] = Person.objects.all().order_by('first_name')
         context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
         context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
+        context['text_fields'] = TextField.objects.all()
+
 
         return context
