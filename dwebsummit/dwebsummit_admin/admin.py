@@ -37,8 +37,10 @@ def ensure_text_fields_exist():
                 obj.value = yaml_contents['text_fields'][name]
                 obj.save()
 
-
-ensure_text_fields_exist()
+try:
+    ensure_text_fields_exist()
+except:
+    pass
 
 # Change admin site header title
 admin.site.site_header = 'DWebSummit Admin'
