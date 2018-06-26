@@ -85,14 +85,6 @@
     // padding-bottom:8rem;
     // margin-bottom:0;
   }
-  section#sponsors {
-    img {
-      max-width: 200rem;
-      height: auto;
-    }
-    .box { padding: 2rem; }
-    .grid { padding-left:5px; }
-  }
   #signup {
     border-radius: 10px;
     text-align: left;
@@ -197,6 +189,12 @@
     margin-bottom: 2rem;
   }
   section#sponsors {
+    img {
+      max-width: 200rem;
+      height: auto;
+    }
+    .box { padding: 2rem; }
+    .grid { padding-left:5px; }
     .lead-sponsors-grid {
       .box { display: inline-block; }
       .sponsor-img {
