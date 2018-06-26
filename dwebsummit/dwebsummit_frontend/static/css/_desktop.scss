@@ -198,11 +198,16 @@
   }
   section#sponsors {
     .lead-sponsors-grid {
-      .box {
-        display: inline-block;
-      }
+      .box { display: inline-block; }
       .sponsor-img {
         height: 15rem;
+        width: auto;
+      }
+    }
+    .sponsors-grid {
+      .box { display: inline-block; }
+      .sponsor-img {
+        height: 7.5rem;
         width: auto;
       }
     }
