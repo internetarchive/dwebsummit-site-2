@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',
+    'ckeditor',
+    'ckeditor_uploader',
     'dwebsummit_admin',
     'dwebsummit_frontend',
 ]
@@ -136,7 +138,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public', 'media')
 MEDIA_URL = '/media/'
 
+# Create uploads dir used by text editor
+UPLOAD_ROOT = os.path.join(BASE_DIR, 'public', 'uploads')
+UPLOADS_URL = 'uploads/'   # note no first slash
 
+if not os.path.exists(UPLOAD_ROOT):
+    os.makedirs(UPLOAD_ROOT)
 
 # TINY MCE RTE config
 TINYMCE_SPELLCHECKER = False
@@ -169,4 +176,58 @@ TINYMCE_DEFAULT_CONFIG = {
     # 'contextmenu': 'formats | link image',
     # 'menubar': True,
     # 'statusbar': True,
+}
+
+# CK Editor config
+CKEDITOR_UPLOAD_PATH = UPLOADS_URL
+CKEDITOR_IMAGE_BACKEND = "pillow"
+IMAGE_QUALITY = 98
+THUMBNAIL_SIZE = (500, 500)
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 800,
+        'width': '100%',
+        'contentsCss': '/static/css/main.css',
+        'toolbar_full': [
+            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',]},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            # TODO enable FileTools plugin somehow
+            {'name': 'insert',
+             'items': ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'Iframe']},
+            '/',
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['ShowBlocks', 'About']},
+            {'name': 'yourcustomtools', 'items': [
+                # put the name of your editor.ui.addButton here
+                'Preview',
+                'Maximize',
+            ]},
+        ],
+        'extraPlugins': ','.join([
+            'uploadimage', # the upload image feature
+            # your extra plugins here
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath',
+            'filetools'   # TODO enable this in toolbar
+        ]),
+    },
 }

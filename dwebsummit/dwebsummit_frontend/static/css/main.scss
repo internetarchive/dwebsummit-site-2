@@ -955,6 +955,17 @@ img.img-2016 {
   }
 }
 
+/* the editor preview in the admin */
+.cke_editable.cke_editable_themed {
+  padding: 1rem;
+  img {
+    max-width: 400px;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 /* Mobile-only styles */
 @media only screen and (max-width: $responsive_width) {
   .mb2-mobile { margin-bottom: 2rem; }

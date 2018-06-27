@@ -6,6 +6,7 @@ from django.utils.text import slugify
 
 from stdimage.models import StdImageField
 from tinymce.models import HTMLField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Person(models.Model):
@@ -16,7 +17,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=100)
     organization = models.CharField(max_length=255)
     title = models.CharField(max_length=255, blank=True, default='')
-    bio = HTMLField(blank=True, default='')
+    bio = RichTextUploadingField(blank=True, default='')
     type = models.CharField(max_length=100, blank=True, default='Participant')
 
     image = StdImageField(variations={
@@ -88,7 +89,7 @@ class TextField(models.Model):
 
     name = models.CharField(max_length=100, blank=False, unique=True,
                             db_index=True, editable=False)
-    value = HTMLField(blank=True, default='')
+    value = RichTextUploadingField(blank=True, default='')
 
     def __unicode__(self):
         return self.name
