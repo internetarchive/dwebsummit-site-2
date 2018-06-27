@@ -1,36 +1,37 @@
 {% extends 'dwebsummit/layout.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
 {% block body %}
-<div>
+<div class="row">
   <section>
-    <div >
+    <div class="pb-light">
       <h2>Builders Day</h2>
       {{text_fields.get(name='Builders Day').value|safe}}
     </div>
-  </section>
-  <!-- People -->
-  <div class="row">
-    <section>
-      <h3>Coming to Builders Day</h3>
 
-      <div class="grid people full-list">
-      {% for attendee in people.filter(is_attending_builders_day=True) %}
-        <div class="small-col js-bio-unit">
-          <img src="{{attendee.image.thumbnail.url}}" />
-          <div class="name">{{attendee.name}}</div>
-          <div class="subtitle">{{attendee.subtitle}}</div>
-          <div class="hidden-bio">
-            <div>
-              <div class="modal-image"><img src="{{attendee.image.thumbnail.url}}" /></div>
-              <div class="modal-name">{{attendee.name}}</div>
-              <div class="modal-subtitle">{{attendee.subtitle}}</div>
-              <div>{{attendee.bio|safe}}</div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </section>
-  </div>
-  <!-- End Section F -->
-  </div>
+    <div class="schedule-toc">
+      <div>Jump to:<br/></div>
+      <!-- <div><a href="#schedule">Schedule</a></div> -->
+      <div><a href="#people">People</a></div>
+      <div><a href="#science-fair">Science Fair</a></div>
+    </div>
+
+  </section>
+</div>
+
+<!-- People -->
+<div class="row">
+  <section id="people">
+    <h3>Coming to Builders Day</h3>
+    {{ macro_people_grid.people_grid(people.filter(is_attending_builders_day=True)) }}
+  </section>
+</div>
+
+<!-- projects -->
+<div class="row">
+  <section id="science-fair">
+    <h3>Science Fair</h3>
+    {% include 'dwebsummit/_projects_list.html' %}
+  </section>
+</div>
 {% endblock %}

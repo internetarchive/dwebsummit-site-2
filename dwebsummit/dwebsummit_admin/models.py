@@ -93,3 +93,17 @@ class TextField(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Project(models.Model):
+    class Meta:
+        verbose_name_plural = 'projects'
+
+    title = models.CharField(max_length=255, blank=True, default='')
+    short_description = models.CharField(max_length=255, blank=True, default='')
+    full_description = RichTextUploadingField(blank=True, default='')
+
+    people = models.ManyToManyField(Person)
+
+    def __unicode__(self):
+        return self.title.strip() or 'Untitled project'

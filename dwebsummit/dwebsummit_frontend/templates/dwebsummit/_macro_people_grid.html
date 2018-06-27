@@ -1,0 +1,21 @@
+{# a macro to render an array of people objects #}
+
+{% macro people_grid(people) -%}
+  <div class="grid people full-list">
+  {% for attendee in people.filter(is_attending_builders_day=True) %}
+    <div class="small-col js-bio-unit">
+      <img src="{{attendee.image.thumbnail.url}}" />
+      <div class="name">{{attendee.name}}</div>
+      <div class="subtitle">{{attendee.subtitle}}</div>
+      <div class="hidden-bio">
+        <div>
+          <div class="modal-image"><img src="{{attendee.image.thumbnail.url}}" /></div>
+          <div class="modal-name">{{attendee.name}}</div>
+          <div class="modal-subtitle">{{attendee.subtitle}}</div>
+          <div>{{attendee.bio|safe}}</div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{%- endmacro %}

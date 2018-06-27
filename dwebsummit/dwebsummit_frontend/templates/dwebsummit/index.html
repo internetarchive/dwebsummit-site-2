@@ -1,4 +1,5 @@
 {% extends 'dwebsummit/layout.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
 {% block body %}
 
@@ -99,23 +100,7 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
 <div class="row grey-row">
   <section>
     <h2>Coming to Dweb 2018</h2>
-
-    <div class="grid people full-list">
-    {% for attendee in people %}
-      <div class="small-col js-bio-unit">
-        <img src="{{attendee.image.thumbnail.url}}" />
-        <div class="name">{{attendee.name}}</div>
-        <div class="subtitle">{{attendee.subtitle}}</div>
-        <div class="hidden-bio">
-          <div>
-            <div class="modal-image"><img src="{{attendee.image.thumbnail.url}}" /></div>
-            <div class="modal-name">{{attendee.name}}</div>
-            <div class="modal-subtitle">{{attendee.subtitle}}</div>
-            <div>{{attendee.bio|safe}}</div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
+    {{ macro_people_grid.people_grid(people) }}
   </section>
 </div>
 <!-- End Section F -->
