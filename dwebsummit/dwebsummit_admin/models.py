@@ -25,6 +25,7 @@ class Person(models.Model):
     })
 
     is_attending_builders_day = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
 
     @property
     def name(self):

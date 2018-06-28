@@ -13,7 +13,7 @@ from .models import Person, Sponsor, TextField, Project, Page, NavbarLink, Foote
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subtitle', 'type')
+    list_display = ('name', 'subtitle', 'type', 'is_attending_builders_day',  'is_featured',)
 
 
 @admin.register(Sponsor)
@@ -31,7 +31,7 @@ class ProjectForm(forms.ModelForm):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     form = ProjectForm
-    list_display = ('__unicode__', 'short_description', )
+    list_display = ('__unicode__', 'short_description',)
     filter_horizontal = ('people',)
 
 
