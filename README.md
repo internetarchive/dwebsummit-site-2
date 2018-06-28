@@ -35,6 +35,9 @@ Note this is how the initial project was created:
 PYTHONPATH=sitepackages ./sitepackages/django/bin/django-admin.py startproject dwebsummit
 ```
 
+Note, `stdimage` was added to repo, so it could be modified to allow image upscaling. I'd like to fork it and use that later.
+
+
 If you make changes to the models, you'll need to create migrations and migrate the DB.
 
 ```

@@ -126,10 +126,8 @@ class Page(models.Model):
     title = models.CharField(max_length=255, blank=True, default='')
 
     banner_image = StdImageField(variations={
-        'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
-    }, blank=True, null=True)
-
-    thumbnail_image = StdImageField(variations={
+        'banner': { 'width': 1160, 'height': 420, 'crop': True},
+        'grid': { 'width': 370, 'height': 250, 'crop': True},
         'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
     }, blank=True, null=True)
 

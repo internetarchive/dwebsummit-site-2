@@ -2,7 +2,7 @@ django==1.11.13
 python-dotenv==0.6.0
 pyyaml==3.12
 Jinja2==2.10
-django-stdimage==2.4.2
+#django-stdimage==2.4.2
 # django-tinymce==2.7.0  # note this is not used anymore, but might be needed for migrations
 dj_database_url==0.4.1
 https://github.com/django-ckeditor/django-ckeditor/archive/bdb7ddd703b16828d926d69b722e67ea1a3bb452.zip
