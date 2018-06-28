@@ -1,12 +1,15 @@
 {% extends 'dwebsummit/layout.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
 {% block body %}
 <div class="narrower">
   <section>
-    <div>
-      <h2>{{object.title}}</h2>
+    <h2>{{object.title}}</h2>
+    {% if object.banner_image %}
+      <img src="{{object.banner_image.banner.url}}" />
       {{object.body_text|safe}}
+    {% endif %}
     </div>
   </section>
 </div>
@@ -16,4 +19,22 @@
     {{ macro_people_grid.people_grid(object.people.all()) }}
   </section>
 </div>
+
+<div class="row">
+  <section id="page-nav">
+    {% if object.prev_page %}
+      ← <a href="{{object.prev_page.page_url_abs}}">{{object.prev_page.title}}</a>
+    {% endif %}
+    {% if object.next_page %}
+      <a href="{{object.prev_page.page_url_abs}}">{{object.next_page.title}}</a> →
+    {% endif %}
+  </section>
+</div>
+
+<div class="row">
+  <section id="related">
+    {{ macro_related_grid.related_grid(object.related_pages.all()) }}
+  </section>
+</div>
+
 {% endblock %}
