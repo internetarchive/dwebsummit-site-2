@@ -2,7 +2,7 @@
 
 {% macro people_grid(people) -%}
   <div class="grid people full-list">
-  {% for attendee in people.filter(is_attending_builders_day=True) %}
+  {% for attendee in people %}
     <div class="small-col js-bio-unit">
       <img src="{{attendee.image.thumbnail.url}}" />
       <div class="name">{{attendee.name}}</div>

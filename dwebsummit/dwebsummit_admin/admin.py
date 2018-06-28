@@ -70,7 +70,7 @@ class PageForm(forms.ModelForm):
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     form = PageForm
-    list_display = ('get_page_url', '__unicode__', 'is_published',)
+    list_display = ('get_page_url', '__unicode__', 'is_published', 'page_template', )
     filter_horizontal = ('people',)
 
     def get_page_url(self, obj):
@@ -98,12 +98,6 @@ def bootstrap_data():
     # read yml file
     with open(os.path.join(os.path.dirname(__file__), 'data_scaffold.yml'), 'r') as stream:
         yaml_contents = yaml.load(stream)
-        for name in yaml_contents['text_fields']:
-            obj, created = TextField.objects.get_or_create(name=name)
-            if created:
-                obj.value = yaml_contents['text_fields'][name]
-                obj.save()
-
         # Only creaet initial pages if no pages exist
         # (allows admins to delete pages in the future)
         if Page.objects.all().count() == 0:

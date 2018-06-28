@@ -1,25 +1,18 @@
-# Text fields added here will be added to the CMS
-text_fields:
-  "Code of Conduct": ""
-  "RFP page": ""
-  "Builders Day": ""
-
-
 # Default pages that are added to the CMS
 pages:
   "":
-    title: Decentralized Web Summit
-    template: "home.html"
+    title: Home
+    page_template: "home.html"
   "conduct":
     title: Code of Conduct
   "proposals":
     title: Call for Proposals
   "builders-day":
     title: "Builders Day"
-    template: "builders_day.html"
+    page_template: "builders_day.html"
   "logistics":
     title: "Logistics"
-    template: "logistics.html"
+    page_template: "logistics.html"
   "what-to-expect":
     title: "What to Expect"
-    template: "what_to_expect.html"
+    page_template: "what_to_expect.html"

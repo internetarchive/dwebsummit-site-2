@@ -392,6 +392,10 @@ footer {
   text-align: left;
   .footer-nav {
     padding: 2rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    // grid-template-rows: repeat(2, 100px);
     a { display: block; }
   }
   a {

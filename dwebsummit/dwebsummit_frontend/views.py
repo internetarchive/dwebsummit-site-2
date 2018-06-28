@@ -60,7 +60,7 @@ class PageDetailView(DetailView):
 
     def get_object(self):
         slug = self.kwargs.get('slug', '')
-        return get_object_or_404(Page, page_url=slug)
+        return get_object_or_404(Page, page_url=slug, is_published=True)
 
     def get_template_names(self, **kwargs):
         return [ 'dwebsummit/page-templates/' + self.object.page_template ]

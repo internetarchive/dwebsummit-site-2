@@ -1,15 +1,13 @@
 <div id="footer-wrapper">
   <footer>
-      <div class="footer-nav grid narrower">
-        <div class="unit half">
-          {% for link in footer_links %}
-            {% if link.external_url %}
-              <a href="{{link.external_url}}">{{link.title}}</a>
-            {% elif link.page %}
-              <a href="{{link.page.page_url}}">{{link.title}}</a>
-            {% endif %}
-          {% endfor %}
-        </div>
+      <div class="footer-nav narrower">
+        {% for link in footer_links %}
+          {% if link.external_url %}
+            <a href="{{link.external_url}}">{{link.title}}</a>
+          {% elif link.page %}
+            <a href="/{{link.page.page_url}}">{{link.title}}</a>
+          {% endif %}
+        {% endfor %}
       </div>
       <div class="p2p-wrapper">
         <div class="p2p-row">

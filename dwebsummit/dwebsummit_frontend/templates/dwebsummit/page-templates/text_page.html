@@ -1,4 +1,5 @@
 {% extends 'dwebsummit/layout.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
 {% block body %}
 <div class="narrower">
@@ -7,6 +8,12 @@
       <h2>{{object.title}}</h2>
       {{object.body_text|safe}}
     </div>
+  </section>
+</div>
+
+<div class="row">
+  <section id="people">
+    {{ macro_people_grid.people_grid(object.people.all()) }}
   </section>
 </div>
 {% endblock %}
