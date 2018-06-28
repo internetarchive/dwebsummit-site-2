@@ -7,7 +7,9 @@ import yaml
 from django.contrib import admin
 from django import forms
 
-from .models import Person, Sponsor, TextField, Project, Page
+from adminsortable2.admin import SortableAdminMixin
+
+from .models import Person, Sponsor, TextField, Project, Page, NavbarLink, FooterLink
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -77,6 +79,16 @@ class PageAdmin(admin.ModelAdmin):
 @admin.register(TextField)
 class TextFieldAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
+
+@admin.register(NavbarLink)
+class NavbarLinkAdmin(SortableAdminMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(FooterLink)
+class FooterLinkAdmin(SortableAdminMixin, admin.ModelAdmin):
+    pass
 
 
 def bootstrap_data():

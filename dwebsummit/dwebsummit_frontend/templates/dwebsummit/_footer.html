@@ -2,13 +2,13 @@
   <footer>
       <div class="footer-nav grid narrower">
         <div class="unit half">
-          <a href="/">Home</a>
-          <a href="/logistics/">Logistics</a>
-          <a href="/what-to-expect/">What To Expect</a>
-        </div>
-        <div class="unit half">
-          <a href="/conduct/">Code of Conduct</a>
-          <a href="/proposals/">Proposals</a>
+          {% for link in footer_links %}
+            {% if link.external_url %}
+              <a href="{{link.external_url}}">{{link.title}}</a>
+            {% elif link.page %}
+              <a href="{{link.page.page_url}}">{{link.title}}</a>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
       <div class="p2p-wrapper">

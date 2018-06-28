@@ -141,3 +141,30 @@ class Page(models.Model):
 
     def __unicode__(self):
         return self.title.strip() or 'Untitled page'
+
+
+class NavbarLink(models.Model):
+    class Meta(object):
+        ordering = ['sort_order']
+
+    title = models.CharField(max_length=100, blank=False, default='')
+    page = models.ForeignKey('Page', blank=True, null=True)
+    external_url = models.URLField(max_length=255, blank=True, default='')
+    sort_order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    is_featured = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.title.strip() or 'Untitled link'
+
+
+class FooterLink(models.Model):
+    class Meta(object):
+        ordering = ['sort_order']
+
+    title = models.CharField(max_length=100, blank=False, default='')
+    page = models.ForeignKey('Page', blank=True, null=True)
+    external_url = models.URLField(max_length=255, blank=True, default='')
+    sort_order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    def __unicode__(self):
+        return self.title.strip() or 'Untitled link'

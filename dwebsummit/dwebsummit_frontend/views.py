@@ -7,7 +7,9 @@ import yaml
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, DetailView
 
-from dwebsummit_admin.models import Person, Sponsor, TextField, Project, Page
+from dwebsummit_admin.models import (
+    Person, Sponsor, TextField, Project, Page, FooterLink, NavbarLink
+)
 
 
 with open(os.path.join(os.path.dirname(__file__), 'contents.yml'), 'r') as stream:
@@ -27,6 +29,8 @@ def build_context_data(context):
     context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
     context['text_fields'] = TextField.objects.all()
     context['projects'] = Project.objects.all().order_by('title')
+    context['footer_links'] = FooterLink.objects.all().prefetch_related('page').order_by('sort_order')
+    context['navbar_links'] = NavbarLink.objects.all().prefetch_related('page').order_by('sort_order')
 
 
 class WithDataTemplateView(TemplateView):

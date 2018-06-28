@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
     'ckeditor',
     'ckeditor_uploader',
+    'adminsortable2',
     'dwebsummit_frontend',
 ]
 
