@@ -138,14 +138,22 @@ class Page(models.Model):
     next_page = models.ForeignKey('self', related_name='prev', blank=True, null=True)
     prev_page = models.ForeignKey('self', related_name='next', blank=True, null=True)
 
-    people = models.ManyToManyField(Person, blank=True, null=True)
+    people = models.ManyToManyField(Person, blank=True)
 
-    related_pages = models.ManyToManyField('self', blank=True, null=True)
+    related_pages = models.ManyToManyField('self', blank=True)
 
     is_published = models.BooleanField(default=True)
 
+    @property
+    def page_url_abs(self):
+        if self.page_url == '':
+            return '/'
+        else:
+            return '/' + self.page_url + '/'
+
     def __unicode__(self):
-        return self.title.strip() or 'Untitled page'
+        title = self.title.strip() or 'Untitled page'
+        return '/' + self.page_url + ' – ' + title + ''
 
 
 class NavbarLink(models.Model):

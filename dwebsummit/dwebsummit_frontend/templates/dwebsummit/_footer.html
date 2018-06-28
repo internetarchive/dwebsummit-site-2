@@ -5,7 +5,7 @@
           {% if link.external_url %}
             <a href="{{link.external_url}}">{{link.title}}</a>
           {% elif link.page %}
-            <a href="/{{link.page.page_url}}/">{{link.title}}</a>
+            <a href="{{link.page.page_url_abs}}">{{link.title}}</a>
           {% endif %}
         {% endfor %}
       </div>

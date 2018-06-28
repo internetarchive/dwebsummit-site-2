@@ -150,7 +150,7 @@ TINYMCE_SPELLCHECKER = False
 TINYMCE_COMPRESSOR = False
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
-    'width': 800,
+    'width': 600,
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
     'selector': 'textarea',
@@ -187,7 +187,7 @@ THUMBNAIL_SIZE = (500, 500)
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
-        'height': 800,
+        'height': 600,
         'width': '100%',
         'contentsCss': '/static/css/main.css',
         'toolbar_full': [
