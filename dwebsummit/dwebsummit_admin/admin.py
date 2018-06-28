@@ -31,7 +31,7 @@ class ProjectForm(forms.ModelForm):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     form = ProjectForm
-    list_display = ('__unicode__', 'short_description',)
+    list_display = ('__unicode__', 'short_description', 'is_published')
     filter_horizontal = ('people',)
 
 
@@ -71,7 +71,7 @@ class PageForm(forms.ModelForm):
 class PageAdmin(admin.ModelAdmin):
     form = PageForm
     list_display = ('get_page_url', '__unicode__', 'is_published', 'page_template', )
-    filter_horizontal = ('people',)
+    filter_horizontal = ('people', 'related_pages')
 
     def get_page_url(self, obj):
         return obj.page_url or '<home>'

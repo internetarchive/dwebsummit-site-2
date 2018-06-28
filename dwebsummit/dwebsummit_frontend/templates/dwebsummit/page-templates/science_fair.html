@@ -1,0 +1,21 @@
+{% extends 'dwebsummit/layout.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+
+{% block body %}
+<div class="row">
+  <section>
+    <div class="pb-light">
+      <h2>{{object.title}}</h2>
+      {{object.body_text|safe}}
+    </div>
+  </section>
+</div>
+
+<!-- projects -->
+<div class="row">
+  <section id="science-fair">
+    <h3>Science Fair</h3>
+    {% include 'dwebsummit/_projects_list.html' %}
+  </section>
+</div>
+{% endblock %}

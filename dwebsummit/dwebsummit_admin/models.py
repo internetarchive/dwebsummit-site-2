@@ -104,6 +104,8 @@ class Project(models.Model):
     short_description = models.CharField(max_length=255, blank=True, default='')
     full_description = RichTextUploadingField(blank=True, default='')
 
+    is_published = models.BooleanField(default=True)
+
     people = models.ManyToManyField(Person)
 
     def __unicode__(self):
@@ -123,6 +125,8 @@ class Page(models.Model):
 
     title = models.CharField(max_length=255, blank=True, default='')
 
+    is_published = models.BooleanField(default=True)
+
     banner_image = StdImageField(variations={
         'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
     }, blank=True, null=True)
@@ -136,9 +140,9 @@ class Page(models.Model):
     next_page = models.ForeignKey('self', related_name='prev', blank=True, null=True)
     prev_page = models.ForeignKey('self', related_name='next', blank=True, null=True)
 
-    is_published = models.BooleanField(default=True)
-
     people = models.ManyToManyField(Person, blank=True, null=True)
+
+    related_pages = models.ManyToManyField('self', blank=True, null=True)
 
     def __unicode__(self):
         return self.title.strip() or 'Untitled page'

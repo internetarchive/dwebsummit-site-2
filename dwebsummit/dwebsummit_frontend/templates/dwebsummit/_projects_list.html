@@ -5,7 +5,7 @@
       <div class="js-bio-unit">
         <div class="science-fair-title">{{row.title}}</div>
         {% if row.short_description %}<div class="science-fair-short-description">{{row.short_description|urlize}}</div>{% endif %}
-        {% if row.full_description %}<div class="science-fair-full-description">{{row.full_description|safe|truncate(300, "")}} {% if row.full_description.length > 300 %}<span class="science-fair-read-more">Read more.</span>{% endif %}</div>{% endif %}
+        {% if row.full_description %}<div class="science-fair-full-description">{{row.full_description|safe|truncate(300, "")}} {% if row.full_description|length > 300 %}<span class="science-fair-read-more">Read more.</span>{% endif %}</div>{% endif %}
 
         <div class="hidden-bio">
           <div>
@@ -19,7 +19,7 @@
       </div>
 
       {% if row.people.all().count() > 0 %}
-        {{ macro_people_grid.people_grid(row.people) }}
+        {{ macro_people_grid.people_grid(row.people.all()) }}
       {% endif %}
     </div>
   {% endfor %}

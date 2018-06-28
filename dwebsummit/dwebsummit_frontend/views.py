@@ -28,7 +28,7 @@ def build_context_data(context):
     context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
     context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
     context['text_fields'] = TextField.objects.all()
-    context['projects'] = Project.objects.all().order_by('title')
+    context['projects'] = Project.objects.filter(is_published=True).order_by('title')
     context['footer_links'] = FooterLink.objects.all().prefetch_related('page').order_by('sort_order')
     context['navbar_links'] = NavbarLink.objects.all().prefetch_related('page').order_by('sort_order')
 
