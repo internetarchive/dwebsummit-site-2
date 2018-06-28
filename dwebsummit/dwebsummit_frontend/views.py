@@ -4,14 +4,29 @@ from __future__ import unicode_literals
 import os
 import yaml
 
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, DetailView
 
-from dwebsummit_admin.models import Person, Sponsor, TextField, Project
+from dwebsummit_admin.models import Person, Sponsor, TextField, Project, Page
 
 
 with open(os.path.join(os.path.dirname(__file__), 'contents.yml'), 'r') as stream:
     yaml_contents = yaml.load(stream)
+
+
+def build_context_data(context):
+    # context['title'] = self.title.capitalize()
+
+    # Data from the yaml file
+    context['page'] = {
+        'metadata': yaml_contents
+    }
+
+    context['people'] = Person.objects.all().order_by('first_name')
+    context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
+    context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
+    context['text_fields'] = TextField.objects.all()
+    context['projects'] = Project.objects.all().order_by('title')
 
 
 class WithDataTemplateView(TemplateView):
@@ -31,17 +46,27 @@ class WithDataTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(WithDataTemplateView, self).get_context_data(**kwargs)
-        context['title'] = self.title.capitalize()
+        build_context_data(context)
+        return context
 
-        # Data from the yaml file
-        context['page'] = {
-            'metadata': yaml_contents
-        }
 
-        context['people'] = Person.objects.all().order_by('first_name')
-        context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
-        context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
-        context['text_fields'] = TextField.objects.all()
-        context['projects'] = Project.objects.all().order_by('title')
+class PageDetailView(DetailView):
+    model = Page
+    slug_url_kwarg = 'page_url'
 
+    def get_object(self):
+        slug = self.kwargs.get('slug', '')
+        return get_object_or_404(Page, page_url=slug)
+
+    def get_template_names(self, **kwargs):
+        return [ 'dwebsummit/page-templates/' + self.object.page_template ]
+        return super(PageDetailView, self).get_template_names(**kwargs)
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(PageDetailView, self).get_context_data(**kwargs)
+        context['title'] = self.object.title.capitalize()
+
+        # Add additional context
+        build_context_data(context)
         return context

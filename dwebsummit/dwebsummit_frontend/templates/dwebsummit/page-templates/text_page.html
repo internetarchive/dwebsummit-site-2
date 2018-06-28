@@ -3,9 +3,9 @@
 {% block body %}
 <div class="narrower">
   <section>
-    <div >
-      <h2>Code of conduct</h2>
-      {{text_fields.get(name='Code of Conduct').value|safe}}
+    <div>
+      <h2>{{object.title}}</h2>
+      {{object.body_text|safe}}
     </div>
   </section>
 </div>

@@ -107,3 +107,37 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.title.strip() or 'Untitled project'
+
+
+
+class Page(models.Model):
+    """This model allows dynamic page creation in the admin"""
+    class Meta:
+        verbose_name_plural = 'pages'
+
+    page_url = models.CharField(max_length=255, blank=True, unique=True, db_index=True)
+    page_template = models.CharField(max_length=255, blank=True,
+                                     default='text_page.html',
+                                     help_text='Changes the html template.')
+
+    title = models.CharField(max_length=255, blank=True, default='')
+
+    banner_image = StdImageField(variations={
+        'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
+    }, blank=True, null=True)
+
+    thumbnail_image = StdImageField(variations={
+        'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
+    }, blank=True, null=True)
+
+    body_text = RichTextUploadingField(blank=True, default='')
+
+    next_page = models.ForeignKey('self', related_name='prev', blank=True, null=True)
+    prev_page = models.ForeignKey('self', related_name='next', blank=True, null=True)
+
+    is_published = models.BooleanField(default=True)
+
+    people = models.ManyToManyField(Person, blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title.strip() or 'Untitled page'

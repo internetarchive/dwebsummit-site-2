@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'dwebsummit_admin',  # above django.contrib.admin so it can override templates
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'tinymce',
     'ckeditor',
     'ckeditor_uploader',
-    'dwebsummit_admin',
     'dwebsummit_frontend',
 ]
 

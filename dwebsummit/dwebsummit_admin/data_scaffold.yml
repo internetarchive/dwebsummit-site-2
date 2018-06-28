@@ -3,3 +3,23 @@ text_fields:
   "Code of Conduct": ""
   "RFP page": ""
   "Builders Day": ""
+
+
+# Default pages that are added to the CMS
+pages:
+  "":
+    title: Decentralized Web Summit
+    template: "home.html"
+  "conduct":
+    title: Code of Conduct
+  "proposals":
+    title: Call for Proposals
+  "builders-day":
+    title: "Builders Day"
+    template: "builders_day.html"
+  "logistics":
+    title: "Logistics"
+    template: "logistics.html"
+  "what-to-expect":
+    title: "What to Expect"
+    template: "what_to_expect.html"

@@ -7,7 +7,7 @@ import yaml
 from django.contrib import admin
 from django import forms
 
-from .models import Person, Sponsor, TextField, Project
+from .models import Person, Sponsor, TextField, Project, Page
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -33,13 +33,56 @@ class ProjectAdmin(admin.ModelAdmin):
     filter_horizontal = ('people',)
 
 
+
+# Read the "page-templates" directory so those values can be used in the form
+rootdir = os.path.join(
+    os.path.dirname(__file__),
+    '..',
+    'dwebsummit_frontend',
+    'templates',
+    'dwebsummit',
+    'page-templates'
+)
+for root, subdirs, files in os.walk(rootdir):
+    # make sure text_page.html is first and default
+    files.remove('text_page.html')
+    files.insert(0, 'text_page.html')
+    available_templates = [
+        ( file, file.replace('_', ' ').replace('.html', '').title() )
+        for file in files
+    ]
+
+
+class PageForm(forms.ModelForm):
+    class Meta:
+        model = Page
+        fields = '__all__'
+
+    page_template = forms.ChoiceField(choices=available_templates)
+
+    def __init__(self, *args, **kwargs):
+        super(PageForm, self).__init__(*args, **kwargs)
+        self.fields['page_url'].help_text = 'Examples: "<code>proposals</code>",   "<code>about/internet-archive</code>". Leave blank for homepage'
+
+
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    form = PageForm
+    list_display = ('get_page_url', '__unicode__', 'is_published',)
+    filter_horizontal = ('people',)
+
+    def get_page_url(self, obj):
+        return obj.page_url or '<home>'
+
 @admin.register(TextField)
 class TextFieldAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
-# Data_scaffold contains text fields with some defaults
-def ensure_text_fields_exist():
+def bootstrap_data():
+    """data_scaffold.yml contains some default db values
+    This loads that initial data
+    """
     # read yml file
     with open(os.path.join(os.path.dirname(__file__), 'data_scaffold.yml'), 'r') as stream:
         yaml_contents = yaml.load(stream)
@@ -49,10 +92,24 @@ def ensure_text_fields_exist():
                 obj.value = yaml_contents['text_fields'][name]
                 obj.save()
 
+        # Only creaet initial pages if no pages exist
+        # (allows admins to delete pages in the future)
+        if Page.objects.all().count() == 0:
+            print 'Bootstrapping pages'
+            for page_url in yaml_contents['pages']:
+                obj, created = Page.objects.get_or_create(page_url=page_url)
+                default_values = yaml_contents['pages'][page_url]
+                if True or created:
+                    obj.__dict__.update(**default_values)
+                    obj.save()
+
 try:
-    ensure_text_fields_exist()
-except:
+    bootstrap_data()
+except Exception as detail:
+    print detail
     pass
+
+
 
 # Change admin site header title
 admin.site.site_header = 'DWebSummit Admin'
