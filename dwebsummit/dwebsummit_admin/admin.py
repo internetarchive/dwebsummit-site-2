@@ -59,6 +59,7 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         fields = '__all__'
+        exclude = ['prev_page']
 
     page_template = forms.ChoiceField(choices=available_templates)
 

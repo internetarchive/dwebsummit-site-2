@@ -1,60 +1,78 @@
 /* header */
 .header {
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  height: $header_size;
   width: 100%;
   z-index: 3;
   background-color: black;
+  color: white;
+  position: relative;
+
+  .logo {
+    display: block;
+    float: left;
+    margin-left: 2rem;
+    text-decoration: none;
+    z-index: 1;
+  }
+
+  a {
+    color: white;
+    &:hover { color: yellow; }
+  }
+
+  a.header-title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .page-Home & {
+      display:none;
+    }
+  }
+  ul.featured-nav {
+    position: absolute;
+    right: 5.5rem;
+    top: 0;
+    padding: 1.5rem 0;
+    li {
+      display: inline-block;
+      margin-right: 1.5rem;
+    }
+  }
 }
 
-.header ul {
+
+/* menu */
+
+ul.menu {
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
+  z-index: 10;
 
-}
-
-.header li a {
-  display: block;
-  padding: 0 2.0rem;
-  text-decoration: none;
-}
-
-.header .logo {
-  display: block;
-  float: left;
-  padding: 10px 20px;
-  text-decoration: none;
-  i {
-    position: relative;
-    top: 4px;
-    font-size: 2em;
-  }
-  z-index: 1;
-}
-
-.header-title {
-  color: white;
-  padding: 0 20px;
-  position:relative;
-  top: 18px;
-  .page-Home & {
-    display:none;
-  }
-}
-.header-title-desktop {
-  position:relative;
-  top: 0px;
-  margin-left:10px;
-}
-
-/* menu */
-
-.header .menu {
-  clear: both;
+  // clear: both;
   max-height: 0;
-  transition: max-height .2s ease-out, background .2s ease-out;
+  transition: all .3s ease-out, background .3s ease-out;
   background-color: yellow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  &, a {
+    color: black;
+  }
+  li a {
+    @extend h1;
+    margin-bottom: 0;
+    display: block;
+    padding: 0 2.0rem;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
+  }
 }
 
 /* menu icon */
@@ -62,12 +80,12 @@
 .header .menu-icon {
   cursor: pointer;
   display: inline-block;
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
   padding: 28px 20px;
-  position: relative;
   user-select: none;
-  z-index:3;
-
+  z-index: 15;
 }
 
 .header .menu-icon .navicon {
@@ -106,26 +124,22 @@
 
 .header .menu-btn:checked ~ .menu {
   max-height: 500px;
-  .page-Home & {
-    /* offset */
-    max-height: 565px;
-    position:relative;
-    top: -65px;
-    padding-top: 5px;
-    z-index: 2;
-  }
+  padding: 2rem 0;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
   background: transparent;
+  color: black;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon:before {
   transform: rotate(-45deg);
+  background: black;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon:after {
   transform: rotate(45deg);
+  background: black;
 }
 
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
@@ -134,7 +148,6 @@
 }
 
 .page-Home .header {
-  // background-color: rgba( #22313f, .7 );
   background-color: transparent;
   position:absolute;
   z-index:1000;
@@ -148,76 +161,61 @@
   }
 }
 
-/* header */
-header a {
-  color: #eee;
-  font-weight:lighter;
-}
-
-
-
-
 /* Mobile-only styles */
-@media only screen and (max-width: $responsive_width) {
-  .header li a {
-    color: black;
-
-    // .h1();
-    font-size: 4.0rem;
-    line-height: 4.8rem;
-    margin-bottom: 0;
-    font-weight: normal;
-  }
+@media (max-width: $responsive_width) {
+  // .header li a {
+  //   color: black;
+  //   margin-bottom: 0;
+  // }
 }
 
 
 /* desktop-only */
 @media (min-width: $responsive_width) {
-  .header li {
-    float: left;
-  }
-
-  .header .menu {
-    clear: none;
-    // float: right;
-    max-height: none;
-    background-color: black;
-  }
-  .header .menu-icon {
-    display: none;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-content:center;
-    box-shadow: initial;
-
-    .page-Home & {
-      box-shadow: initial;
-    }
-  }
-  .page-Home #header-wrapper {
-    position:absolute;
-    z-index:1000;
-    width:100%;
-  }
-  .page-Home header .logo {
-    // important to be visibility:hidden to not break flex layout
-    visibility: hidden;
-  }
-  .page-Home header {
-    background-color: transparent;
-    font-weight:bold;
-  }
-
-  .header {
-    height: $header_size;
-    width: 100%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header li {
-    padding: 0;
-  }
+  // .header li {
+  //   float: left;
+  // }
+  //
+  // .header .menu {
+  //   clear: none;
+  //   // float: right;
+  //   max-height: none;
+  //   background-color: black;
+  // }
+  // .header .menu-icon {
+  //   //display: none;
+  // }
+  // .header {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-content:center;
+  //   box-shadow: initial;
+  //
+  //   .page-Home & {
+  //     box-shadow: initial;
+  //   }
+  // }
+  // .page-Home #header-wrapper {
+  //   position:absolute;
+  //   z-index:1000;
+  //   width:100%;
+  // }
+  // .page-Home header .logo {
+  //   // important to be visibility:hidden to not break flex layout
+  //   visibility: hidden;
+  // }
+  // .page-Home header {
+  //   background-color: transparent;
+  // }
+  //
+  // .header {
+  //   height: $header_size;
+  //   width: 100%;
+  //   display:flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
+  // .header li {
+  //   padding: 0;
+  // }
 }

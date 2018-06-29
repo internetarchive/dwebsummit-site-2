@@ -1,19 +1,21 @@
 {# a macro to render an array of people objects #}
 
-{% macro related_grid(pages) -%}
+{% macro related_grid(pages, include_people=True) -%}
   {% for page in pages %}
-    <div class="related-page">
+    <div class="related-page tint">
       <a href="{{page.page_url_abs}}">
         {% if page.banner_image %}
           <img class="js-dither" src="{{page.banner_image.grid.url}}" />
         {% else %}
-          [ default image ]
+          <img src="/static/img/grid-placeholder.svg" />
         {% endif %}
         <div class="related-page-title">
           {{page.title}}
-          {% set person_list = page.person_list %}
-          {% if person_list %}
-            <br>{{page.person_list}}
+          {% if include_people %}
+            {% set person_list = page.person_list %}
+            {% if person_list %}
+              <br>{{page.person_list}}
+            {% endif %}
           {% endif %}
         </div>
       </a>

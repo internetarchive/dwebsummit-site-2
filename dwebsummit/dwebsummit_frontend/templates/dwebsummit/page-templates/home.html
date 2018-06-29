@@ -1,5 +1,7 @@
 {% extends 'dwebsummit/layout.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
+
 
 {% block body %}
 
@@ -44,33 +46,26 @@
 </div>
 <!-- End Section C -->
 
-<!-- Section D: Origins -->
-<div class="row grey-row">
-  <section id="origins">
-    <h1>Origins</h1>
-    <div class="grid narrower">
-      <div class="unit whole">
-        <p class="img-2016-wrapper">
-          <img class="img-2016 responsive" src="/static/img/dwebsummit-2016-stairs.jpg" alt="Decentralized Web Summit 2016 attendee portrait">
-        </p>
-        <p>
-In June 2016, an early group of builders, archivists, policymakers, and journalists gathered for the first <a href="https://2016.decentralizedweb.net/">Decentralized Web Summit</a> within the columns of the Internet Archive headquarters in San Francisco, home to <a href="https://archive.org/">one of the world’s largest digital libraries</a>. Its founder, Brewster Kahle, issued <a href="http://brewster.kahle.org/2015/08/11/locking-the-web-open-a-call-for-a-distributed-web-2/">a challenge</a> to these early developers: let&#39;s use decentralized technologies to &ldquo;Lock the Web Open,&rdquo; this time for good.
-        </p>
-        <p>
-2016&#39;s gathering was a call to the Dreamers to build a better Web.
-        </p>
-        <p>
-2018&#39;s <b>Decentralized Web Summit – Global Visions / Working Code</b> is a demonstration of how far we have come. With scores of prototypes and apps now built with decentralized protocols, it&#39;s time to collaborate, communicate and engage the communities who need these tools the most.
-        </p>
-      </div>
+{% if object.related_pages.count() %}
+<div class="row">
+  <section>
+    <h1>Multi-Track</h1>
+    <div class="related-grid">
+
+    {{
+      macro_related_grid.related_grid(
+        object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id'),
+        False)
+     }}
     </div>
   </section>
 </div>
+{% endif %}
 
 <!-- End Section D -->
 
 <!-- Section E: EventBrite -->
-<div class="row grey-row">
+<div class="row">
   <section>
     <h1>Register</h1>
     {% include "dwebsummit/_eventbrite_embed.html" %}
@@ -78,17 +73,9 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
 </div>
 <!-- End Section E -->
 
-<!-- Section F: People -->
-<div class="row grey-row">
-  <section>
-    <h1>Coming to Dweb 2018</h1>
-    {{ macro_people_grid.people_grid(people) }}
-  </section>
-</div>
-<!-- End Section F -->
 
 <!-- Section G: Locations -->
-<div id="location-row" class="row grey-row">
+<div class="row">
   <section>
     <h1>Locations</h1>
     {% include "dwebsummit/_locations_row.html" %}
@@ -138,7 +125,7 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
           <i class="material-icons">email</i>
         </td>
         <td>
-          <a href="mailto:dwebsummit@archive.org">dwebsummit@archive.org</a>
+          <a class="email" href="mailto:dwebsummit@archive.org">dwebsummit@archive.org</a>
         </td>
       </tr>
     </table>
@@ -148,8 +135,8 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
 <!-- End Section H -->
 
 <!-- Section I: Sponsors -->
-<div class="row grey-row">
-  <section id="sponsors">
+<div class="row">
+  <section id="sponsors" class="sponsors">
     <h1>Lead Sponsors</h1>
     <div class="lead-sponsors-grid">
       {% for sponsor in lead_sponsors %}
@@ -160,6 +147,8 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
         </div>
       {% endfor %}
     </div>
+  </section>
+  <section class="sponsors">
     <h1>Sponsors</h1>
     <div class="sponsors-grid">
       {% for sponsor in sponsors %}
@@ -170,8 +159,10 @@ In June 2016, an early group of builders, archivists, policymakers, and journali
         </div>
       {% endfor %}
     </div>
-    <div class="footer">
-      Want to become a DWeb Summit Sponsor?  Contact <a href="mailto:DWebSummit@archive.org">DWebSummit@archive.org</a>
+    <div class="sp-footer">
+      <p>
+      Want to become a DWeb Summit Sponsor?  Contact <a href="mailto:dwebsummit@archive.org">dwebsummit@archive.org</a>
+      </p>
     </div>
   </section>
 </div>

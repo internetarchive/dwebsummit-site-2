@@ -12,7 +12,6 @@
       <img class="banner-image js-dither" src="{{object.banner_image.banner.url}}" />
     {% endif %}
 
-
     <div class="page-body-contents">
       {{object.body_text|safe}}
     </div>
@@ -29,17 +28,18 @@
   </div>
   {% endif %}
 
-  {% if object.prev_page or object.next_page %}
+  {% set prev_page = object.prev.first() %}
+  {% if prev_page or object.next_page %}
   <div class="row">
     <section id="page-nav" class="full">
       <div>
-      {% if object.prev_page %}
-        ← <a href="{{object.prev_page.page_url_abs}}">{{object.prev_page.title}}</a>
+      {% if prev_page %}
+        ← <a href="{{prev_page.page_url_abs}}">{{prev_page.title}}</a>
       {% endif %}
       </div>
       <div>
       {% if object.next_page %}
-        <a href="{{object.prev_page.page_url_abs}}">{{object.next_page.title}}</a> →
+        <a href="{{object.next_page.page_url_abs}}">{{object.next_page.title}}</a> →
       {% endif %}
       </div>
     </section>
@@ -48,8 +48,8 @@
 
   {% if object.related_pages.count() %}
   <div class="row">
-    <section id="related" class="full">
-      {{ macro_related_grid.related_grid(object.related_pages.all()) }}
+    <section id="related" class="">
+      {{ macro_related_grid.related_grid(object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id')) }}
     </section>
   </div>
   {% endif %}

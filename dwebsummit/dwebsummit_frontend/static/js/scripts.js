@@ -129,10 +129,16 @@ $(document).ready(function() {
 
   /**
    * Image effect
+   * https://github.com/danielepiccone/ditherjs
    */
   var options = {
-    "palette": [[0, 0, 0], [200, 200, 200], [255, 255, 255]],
-    "algorithm": "diffusion"
+    "step": 1,
+    "palette": [[
+      0, 0, 0],
+      /*[200, 200, 200],*/
+      [255, 255, 255]
+    ],
+    "algorithm": "atkinson"
   };
   var ditherjs = new DitherJS(options);
   $('.js-dither').each(function(elem, i) {

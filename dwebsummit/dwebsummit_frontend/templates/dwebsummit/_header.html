@@ -1,26 +1,37 @@
+{% macro render_link(link) -%}
+  {% if link.external_url %}
+    <a href="{{link.external_url}}">{{link.title}}</a>
+  {% elif link.page %}
+    {% if link.page.page_url == "" %}
+      <a href="/">{{link.title}}</a>
+    {% else %}
+      <a href="{{link.page.page_url_abs}}">{{link.title}}</a>
+    {% endif %}
+  {% endif %}
+{%- endmacro %}
+
+
 <header class="header">
-  <div class="hide-mobile logo">
-    <a href="/">
-      <span class="header-title-desktop">Decentralized Web Summit</span>
-     </a>
-  </div>
-  <div class="header-title hide-desktop">
-    <a href="/">#DWebSummit</a>
-  </div>
+  <a class="hide-mobile logo header-title" href="/">
+    Decentralized Web Summit
+  </a>
+  <a class="hide-desktop logo header-title" href="/">
+    Decentralized Web Summit
+  </a>
   <input class="menu-btn" type="checkbox" id="menu-btn"  aria-label="Menu Button" />
-  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-  <ul class="menu">
+  <label class="menu-icon" for="menu-btn">
+    <span class="navicon"></span>
+  </label>
+  <ul class="hide-mobile featured-nav">
     {% for link in navbar_links %}
-      {% if link.external_url %}
-        <a href="{{link.external_url}}">{{link.title}}</a>
-      {% elif link.page %}
-        {% if link.page.page_url == "" %}
-          <li class="hide-desktop"><a href="/">{{link.title}}</a></li>
-        {% else %}
-          <li><a href="{{link.page.page_url_abs}}">{{link.title}}</a></li>
-        {% endif %}
+      {% if link.is_featured %}
+        <li>{{render_link(link)}}</li>
       {% endif %}
     {% endfor %}
-    <li class="hide-desktop"><a href="/">Home</a></li>
+  </ul>
+  <ul class="menu">
+    {% for link in navbar_links %}
+      <li>{{render_link(link)}}</li>
+    {% endfor %}
   </ul>
 </header>
