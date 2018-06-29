@@ -126,4 +126,18 @@ $(document).ready(function() {
       showIndex(currIndex);
     }, msPerPage);
   });
+
+  /**
+   * Image effect
+   */
+  var options = {
+    "palette": [[0, 0, 0], [200, 200, 200], [255, 255, 255]],
+    "algorithm": "diffusion"
+  };
+  var ditherjs = new DitherJS(options);
+  $('.js-dither').each(function(elem, i) {
+    elem.onload = function() {
+      ditherjs.dither(elem);
+    }
+  });
 });
