@@ -10,10 +10,11 @@
           [ default image ]
         {% endif %}
         <div class="related-page-title">
-          {{page.title}}<br>
-          {% for person in page.people.all() %}
-            {{person.name}},
-          {% endfor %}
+          {{page.title}}
+          {% set person_list = page.person_list %}
+          {% if person_list %}
+            <br>{{page.person_list}}
+          {% endif %}
         </div>
       </a>
     </div>

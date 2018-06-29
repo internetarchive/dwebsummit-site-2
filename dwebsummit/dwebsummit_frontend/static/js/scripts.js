@@ -136,8 +136,12 @@ $(document).ready(function() {
   };
   var ditherjs = new DitherJS(options);
   $('.js-dither').each(function(elem, i) {
-    elem.onload = function() {
+    if (elem.complete) {
       ditherjs.dither(elem);
+    } else {
+      elem.onload = function() {
+        ditherjs.dither(elem);
+      }
     }
   });
 });

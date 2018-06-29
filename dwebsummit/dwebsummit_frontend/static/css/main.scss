@@ -126,7 +126,9 @@ img.img-grey {
     filter: initial;
   }
 }
-
+img.js-dither {
+  filter: grayscale(100%);
+}
 
 /* banner */
 #banner {
@@ -660,7 +662,7 @@ section#related {
   // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-template-columns: repeat(3, 1fr);
 
-  img {
+  img, canvas {
     width: 100%;
     height: auto;
   }

@@ -149,6 +149,15 @@ class Page(models.Model):
         else:
             return '/' + self.page_url + '/'
 
+    @property
+    def person_list(self):
+        """Returns a string representation of the people
+        Uses .values for efficiency
+        """
+        values = self.people.all().values('first_name', 'last_name')
+        names = [ v['first_name'] + ' ' + v['last_name'] for v in values ]
+        return ', '.join(names)
+
     def __unicode__(self):
         title = self.title.strip() or 'Untitled page'
         return '/' + self.page_url + ' – ' + title + ''
