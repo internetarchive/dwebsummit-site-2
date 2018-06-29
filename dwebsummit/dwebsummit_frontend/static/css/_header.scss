@@ -1,12 +1,9 @@
 /* header */
-$bg_blue: #22313f;
-
 .header {
-  background-color: #fff;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   width: 100%;
   z-index: 3;
-  background-color: $bg_blue; //#eee;
+  background-color: black;
 }
 
 .header ul {
@@ -14,11 +11,12 @@ $bg_blue: #22313f;
   padding: 0;
   list-style: none;
   overflow: hidden;
+
 }
 
 .header li a {
   display: block;
-  padding: 15px 20px;
+  padding: 0 2.0rem;
   text-decoration: none;
 }
 
@@ -46,7 +44,7 @@ $bg_blue: #22313f;
 }
 .header-title-desktop {
   position:relative;
-  top: -8px;
+  top: 0px;
   margin-left:10px;
 }
 
@@ -56,8 +54,7 @@ $bg_blue: #22313f;
   clear: both;
   max-height: 0;
   transition: max-height .2s ease-out, background .2s ease-out;
-  // background-color: $bg_blue;
-
+  background-color: yellow;
 }
 
 /* menu icon */
@@ -109,7 +106,6 @@ $bg_blue: #22313f;
 
 .header .menu-btn:checked ~ .menu {
   max-height: 500px;
-  background-color: $bg_blue;
   .page-Home & {
     /* offset */
     max-height: 565px;
@@ -152,6 +148,30 @@ $bg_blue: #22313f;
   }
 }
 
+/* header */
+header a {
+  color: #eee;
+  font-weight:lighter;
+}
+
+
+
+
+/* Mobile-only styles */
+@media only screen and (max-width: $responsive_width) {
+  .header li a {
+    color: black;
+
+    // .h1();
+    font-size: 4.0rem;
+    line-height: 4.8rem;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+}
+
+
+/* desktop-only */
 @media (min-width: $responsive_width) {
   .header li {
     float: left;
@@ -161,13 +181,12 @@ $bg_blue: #22313f;
     clear: none;
     // float: right;
     max-height: none;
+    background-color: black;
   }
   .header .menu-icon {
     display: none;
   }
   .header {
-    // height: $header_size;
-    background-color: $bg_blue; //#eee;
     display: flex;
     justify-content: space-between;
     align-content:center;
@@ -187,46 +206,10 @@ $bg_blue: #22313f;
     visibility: hidden;
   }
   .page-Home header {
-    // background-color: rgba(0,0,0,0.0);
     background-color: transparent;
     font-weight:bold;
-    // transition: background-color 0.75s linear;
-    // &:hover {
-      // background-color: rgba(0,0,0,0.75);
-    // }
   }
-}
 
-
-
-/* header */
-// header {
-//   // background-color: #111;
-//   color: white;
-//   // padding:1rem 1rem 1rem 1rem;
-//   font-size: 1.5rem;
-//   // font-family: monospace;
-//   text-align:center;
-// }
-// header, footer {
-//
-// }
-header a {
-  color: #eee;
-  font-weight:lighter;
-  transition: color 0.125s linear;
-  &:hover {
-    color:#3fc380;
-  }
-  &:active {
-    color: lighten(#3fc380, 10%);
-  }
-}
-header .home-link {
-  // font-weight: 800;
-}
-
-@media only screen and (min-width: $responsive_width) {
   .header {
     height: $header_size;
     width: 100%;

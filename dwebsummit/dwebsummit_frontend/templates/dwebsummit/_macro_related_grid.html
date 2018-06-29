@@ -1,0 +1,21 @@
+{# a macro to render an array of people objects #}
+
+{% macro related_grid(pages) -%}
+  {% for page in pages %}
+    <div class="related-page">
+      <a href="{{page.page_url_abs}}">
+        {% if page.banner_image %}
+          <img src="{{page.banner_image.grid.url}}" />
+        {% else %}
+          [ default image ]
+        {% endif %}
+        <div class="related-page-title">
+          {{page.title}}<br>
+          {% for person in page.people.all() %}
+            {{person.name}},
+          {% endfor %}
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+{%- endmacro %}

@@ -3,38 +3,56 @@
 {% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
 {% block body %}
-<div class="narrower">
-  <section>
-    <h2>{{object.title}}</h2>
+<div class="text-page">
+
+  <section class="full pt0">
+    <h1>{{object.title}}</h1>
+
     {% if object.banner_image %}
-      <img src="{{object.banner_image.banner.url}}" />
-      {{object.body_text|safe}}
+      <img class="banner-image" src="{{object.banner_image.banner.url}}" />
     {% endif %}
+
+
+    <div class="page-body-contents">
+      {{object.body_text|safe}}
     </div>
   </section>
-</div>
 
-<div class="row">
-  <section id="people">
-    {{ macro_people_grid.people_grid(object.people.all()) }}
-  </section>
-</div>
 
-<div class="row">
-  <section id="page-nav">
-    {% if object.prev_page %}
-      ← <a href="{{object.prev_page.page_url_abs}}">{{object.prev_page.title}}</a>
-    {% endif %}
-    {% if object.next_page %}
-      <a href="{{object.prev_page.page_url_abs}}">{{object.next_page.title}}</a> →
-    {% endif %}
-  </section>
-</div>
+  {% if object.people.count() %}
+  <div class="row">
+    <section class="full">
+      <div class="people-small">
+        {{ macro_people_grid.people_grid(object.people.all()) }}
+      </div>
+    </section>
+  </div>
+  {% endif %}
 
-<div class="row">
-  <section id="related">
-    {{ macro_related_grid.related_grid(object.related_pages.all()) }}
-  </section>
-</div>
+  {% if object.prev_page or object.next_page %}
+  <div class="row">
+    <section id="page-nav" class="full">
+      <div>
+      {% if object.prev_page %}
+        ← <a href="{{object.prev_page.page_url_abs}}">{{object.prev_page.title}}</a>
+      {% endif %}
+      </div>
+      <div>
+      {% if object.next_page %}
+        <a href="{{object.prev_page.page_url_abs}}">{{object.next_page.title}}</a> →
+      {% endif %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
 
+  {% if object.related_pages.count() %}
+  <div class="row">
+    <section id="related" class="full">
+      {{ macro_related_grid.related_grid(object.related_pages.all()) }}
+    </section>
+  </div>
+  {% endif %}
+
+</div>
 {% endblock %}
