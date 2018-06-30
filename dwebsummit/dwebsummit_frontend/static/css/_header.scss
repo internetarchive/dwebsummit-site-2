@@ -50,8 +50,6 @@ ul.menu {
   list-style: none;
   overflow: hidden;
   z-index: 10;
-
-  // clear: both;
   max-height: 0;
   transition: all .3s ease-out, background .3s ease-out;
   background-color: yellow;
@@ -59,6 +57,10 @@ ul.menu {
   top: 0;
   right: 0;
   width: 100%;
+  li {
+    max-width: $main_container_width;
+    margin: 0 auto;
+  }
   &, a {
     color: black;
   }

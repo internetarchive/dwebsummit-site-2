@@ -23,6 +23,23 @@
     </script>
   </div>
 
+
+{% if object.related_pages.count() %}
+<div class="row">
+  <section>
+    <h1>Multi-Track Features</h1>
+    <div class="related-grid">
+
+    {{
+      macro_related_grid.related_grid(
+        object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id'),
+        False)
+     }}
+    </div>
+  </section>
+</div>
+{% endif %}
+
 <!-- Section C: Three icons with short descriptions -->
 <div class="row">
   <section>
@@ -45,22 +62,6 @@
   </section>
 </div>
 <!-- End Section C -->
-
-{% if object.related_pages.count() %}
-<div class="row">
-  <section>
-    <h1>Multi-Track</h1>
-    <div class="related-grid">
-
-    {{
-      macro_related_grid.related_grid(
-        object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id'),
-        False)
-     }}
-    </div>
-  </section>
-</div>
-{% endif %}
 
 <!-- End Section D -->
 

@@ -143,7 +143,9 @@ $(document).ready(function() {
   var ditherjs = new DitherJS(options);
   $('.js-dither').each(function(elem, i) {
     if (elem.complete) {
-      ditherjs.dither(elem);
+      setTimeout(10, function() {
+        ditherjs.dither(elem);
+      });
     } else {
       elem.onload = function() {
         ditherjs.dither(elem);

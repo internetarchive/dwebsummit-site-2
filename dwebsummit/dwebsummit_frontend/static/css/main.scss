@@ -1,6 +1,6 @@
 $header_size: 60px;
 $responsive_width: 768px;
-
+$main_container_width: 130rem;
 
 @import "reboot";
 @import "base";
@@ -78,6 +78,10 @@ a {
   &:hover {}
 }
 
+.a-style {
+  background: url('/static/img/moving-underline.gif') repeat-x;
+  background-position: 0 100%;
+}
 
 p {
   margin-bottom: 0;
@@ -86,7 +90,7 @@ p {
   }
 
   a {
-    text-decoration: underline;
+    @extend .a-style;
   }
 }
 
@@ -162,7 +166,7 @@ img.js-dither {
 }
 
 section, .section {
-  max-width: 130rem;
+  max-width: $main_container_width;
   margin: 0 auto;
   padding: 3rem 2rem;
 
@@ -232,7 +236,7 @@ section#join-the-conversation {
     i.material-icons {
       font-size: 4rem;
     }
-    a { text-decoration: underline; }
+    a { @extend .a-style; }
   }
 }
 
@@ -555,7 +559,7 @@ img.img-2016 {
     border-top: 1px solid #999;
   }
   td:nth-child(2n) {
-    background-color: lighten(#999, 35%);
+    background-color: #fafafa;
   }
   th {
     color: white;
@@ -690,7 +694,7 @@ section#page-nav {
 
 
 /* Mobile-only styles */
-@media only screen and (max-width: $responsive_width) {
+@media (max-width: $responsive_width) {
   .mb2-mobile { margin-bottom: 2rem; }
   .db-mobile { display: block; }
   .hide-mobile { display: none !important;}
