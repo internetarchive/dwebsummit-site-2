@@ -318,33 +318,68 @@ i.info-icon {
 }
 
 /* people */
+.grid.people.full-list {
+  display: flex;
+  flex-wrap: wrap;
+  text-align:left;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
 
-.people-small {
-  max-width: 80rem;
-  margin: 2rem auto;
-  & .grid.people.full-list {
-    justify-content: center;
+.grid.people {
+  img {
+    box-sizing: border-box;
+    border-radius: 50%;
+    width:100%;
+  }
+  .unit {
+     margin-bottom: 3rem;
+     cursor: pointer;
+   }
+  .name {
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.25em;
+    margin-top:0.75rem;
+  }
+  .short_bio {
+    text-align: center;
+    font-style: italic;
+    color: #aaa;
+    font-size:1em;
+    line-height:1.4em;
+    margin-top: 1em;
   }
 }
 
+.people-small, .people-large {
+  margin: 2rem auto;
+  .grid.people.full-list {
+    justify-content: center;
+  }
+}
+.people-small {
+  max-width: 80rem;
+  .small-col {
+    margin: 0 5px 10px 5px;
+    flex-basis: 19%;
+    overflow-x: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+.people-large {
+  max-width: $main_container_width;
+  .small-col {
+    margin: 0 5px 10px 5px;
+    flex-basis: 25rem;
+    overflow-x: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
 
-.grid.people img {
-  box-sizing: border-box;
-  border-radius: 50%;
-  width:100%;
-}
-.grid.people img:hover {
-}
-.grid.people .unit {
-   margin-bottom: 3rem;
-   cursor: pointer;
-}
-.grid.people .name {
-  text-align: center;
-  font-size: 1em;
-  line-height: 1.25em;
-  margin-top:0.75rem;
-}
 .grid.people .subtitle, .modal .modal-subtitle {
   text-align: center;
   font-style: italic;
@@ -352,19 +387,6 @@ i.info-icon {
   font-size:0.8em;
   line-height:1.4em;
   margin-top: 0.2em;
-}
-
-.grid.people .short_bio {
-  text-align: center;
-  font-style: italic;
-  color: #aaa;
-  font-size:1em;
-  line-height:1.4em;
-  margin-top: 1em;
-}
-
-.page-People .grid {
-  margin-bottom: 8rem;
 }
 
 .caption {
@@ -378,21 +400,8 @@ i.info-icon {
 }
 
 
-.grid.people.full-list {
-  display: flex;
-  flex-wrap: wrap;
-  text-align:left;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: center;
-}
-.small-col {
-  margin: 0 5px 10px 5px;
-  flex-basis: 29%;
-  overflow-x: hidden;
-  flex-grow: 0;
-  flex-shrink: 0;
-}
+
+
 .small-col .name, .small-col .subtitle {
   font-size: 12px !important;
 }

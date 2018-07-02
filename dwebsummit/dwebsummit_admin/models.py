@@ -17,16 +17,16 @@ class Person(models.Model):
     last_name = models.CharField(max_length=100)
     organization = models.CharField(max_length=255)
     title = models.CharField(max_length=255, blank=True, default='')
-    bio = RichTextUploadingField(blank=True, default='')
     type = models.CharField(max_length=100, blank=True, default='Participant')
+    is_attending_builders_day = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
 
     image = StdImageField(variations={
         'thumbnail': { 'width': 300, 'height': 300, 'crop': True },
         #'bw': { 'width': 200, 'height': 200, 'crop': True }
     })
 
-    is_attending_builders_day = models.BooleanField(default=False)
-    is_featured = models.BooleanField(default=False)
+    bio = RichTextUploadingField(blank=True, default='')
 
     @property
     def name(self):

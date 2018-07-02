@@ -1,14 +1,50 @@
-{% extends 'dwebsummit/page-templates/text_page.html' %}
+{% extends 'dwebsummit/layout.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
-{% block extra_content %}
+{% block body %}
+<div class="text-page {{extra_classes}}">
+
+  <section class="full pt0">
+    <h1>{{object.title}}</h1>
+
+    {% if object.banner_image %}
+      <img class="banner-image render-pixel" src="{{object.banner_image.banner_d.url}}" />
+    {% endif %}
+  </section>
 
   {% if people.count() %}
   <div class="row">
     <section class="full">
-      <div class="people-small">
-        {{ macro_people_grid.people_grid(people.all()) }}
+      <h1>Featured</h1>
+      <div class="people-large">
+        {{ macro_people_grid.people_grid(people.filter(type='Featured')) }}
       </div>
+
+      <h1>Presenters</h1>
+      <div class="people-small">
+        {{ macro_people_grid.people_grid(people.filter(type='Participant')) }}
+      </div>
+
+      <h1>Organizers</h1>
+      <div class="people-small">
+        {{ macro_people_grid.people_grid(people.filter(type='Staff')) }}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  <section>
+    <h1>Coming</h1>
+    <div class="page-body-contents">
+      {{object.body_text|safe}}
+    </div>
+  </section>
+
+  {% if object.related_pages.count() %}
+  <div class="row">
+    <section id="related" class="">
+      {{ macro_related_grid.related_grid(object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id')) }}
     </section>
   </div>
   {% endif %}

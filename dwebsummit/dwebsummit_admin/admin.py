@@ -11,9 +11,24 @@ from adminsortable2.admin import SortableAdminMixin
 
 from .models import Person, Sponsor, TextField, Project, Page, NavbarLink, FooterLink
 
+
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        exclude = ['is_featured']
+
+    type = forms.ChoiceField(choices=[
+        ('Participant', 'Participant'),
+        ('Staff', 'Staff'),
+        ('Featured', 'Featured'),
+    ])
+
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subtitle', 'type', 'is_attending_builders_day',  'is_featured',)
+    list_display = ('name', 'subtitle', 'type', 'is_attending_builders_day',)
+    search_fields = ('first_name', 'last_name')
+    list_filter = ('type', 'is_attending_builders_day',)
+    form = PersonForm
 
 
 @admin.register(Sponsor)
@@ -23,6 +38,8 @@ class SponsorAdmin(admin.ModelAdmin):
 
 class ProjectForm(forms.ModelForm):
     short_description = forms.CharField(widget=forms.Textarea(attrs={'rows':3, 'cols':80}))
+    search_fields = ('title',)
+    list_filter = ('is_published',)
     class Meta:
         model = Project
         fields = '__all__'
@@ -72,6 +89,8 @@ class PageForm(forms.ModelForm):
 class PageAdmin(admin.ModelAdmin):
     form = PageForm
     list_display = ('get_page_url', '__unicode__', 'is_published', 'page_template', )
+    search_fields = ('page_url', 'title',)
+    list_filter = ('is_published',)
     filter_horizontal = ('people', 'related_pages')
 
     def get_page_url(self, obj):
