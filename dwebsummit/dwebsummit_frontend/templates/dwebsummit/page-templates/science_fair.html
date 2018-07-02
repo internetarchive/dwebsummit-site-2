@@ -1,15 +1,7 @@
-{% extends 'dwebsummit/layout.html' %}
+{% extends 'dwebsummit/page-templates/text_page.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
-{% block body %}
-<div class="row">
-  <section>
-    <div class="pb-light">
-      <h1>{{object.title}}</h1>
-      {{object.body_text|safe}}
-    </div>
-  </section>
-</div>
+{% block extra_content %}
 
 <!-- projects -->
 <div class="row">
@@ -18,4 +10,5 @@
     {% include 'dwebsummit/_projects_list.html' %}
   </section>
 </div>
+
 {% endblock %}

@@ -3,13 +3,13 @@
 {% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
 {% block body %}
-<div class="text-page">
+<div class="text-page {{extra_classes}}">
 
   <section class="full pt0">
     <h1>{{object.title}}</h1>
 
     {% if object.banner_image %}
-      <img class="banner-image js-dither" src="{{object.banner_image.banner.url}}" />
+      <img class="banner-image render-pixel" src="{{object.banner_image.banner_d.url}}" />
     {% endif %}
 
     <div class="page-body-contents">
@@ -53,6 +53,8 @@
     </section>
   </div>
   {% endif %}
+
+  {% block extra_content %}{% endblock %}
 
 </div>
 {% endblock %}

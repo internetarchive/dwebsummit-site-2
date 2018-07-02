@@ -1,14 +1,7 @@
-{% extends 'dwebsummit/layout.html' %}
+{% extends 'dwebsummit/page-templates/text_page.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
-{% block body %}
-<div class="narrower">
-  <section>
-    <div >
-      <h1>What to Expect</h1>
-      {{page.metadata.what_to_expect_body_text|safe}}
-    </div>
-  </section>
-</div>
+{% block extra_content %}
 
 <div class="narrower">
   <section>

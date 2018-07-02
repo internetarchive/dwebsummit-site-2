@@ -1,22 +1,14 @@
-{% extends 'dwebsummit/layout.html' %}
+{% extends 'dwebsummit/page-templates/text_page.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
-{% block body %}
+{% block extra_content %}
 <div class="row">
-  <section>
-    <div class="pb-light">
-      <h2>Builders Day</h2>
-      {{text_fields.get(name='Builders Day').value|safe}}
-    </div>
-
-    <div class="schedule-toc">
-      <div>Jump to:<br/></div>
-      <!-- <div><a href="#schedule">Schedule</a></div> -->
-      <div><a href="#people">People</a></div>
-      <div><a href="#science-fair">Science Fair</a></div>
-    </div>
-
-  </section>
+  <div class="schedule-toc">
+    <div>Jump to:<br/></div>
+    <!-- <div><a href="#schedule">Schedule</a></div> -->
+    <div><a href="#people">People</a></div>
+    <div><a href="#science-fair">Science Fair</a></div>
+  </div>
 </div>
 
 <!-- People -->
@@ -34,4 +26,5 @@
     {% include 'dwebsummit/_projects_list.html' %}
   </section>
 </div>
+
 {% endblock %}
