@@ -1,6 +1,7 @@
 $header_size: 60px;
 $responsive_width: 768px;
 $main_container_width: 130rem;
+$smaller_container_width: 80rem;
 
 @import "reboot";
 @import "base";
@@ -188,6 +189,9 @@ section {
     padding:0 0 0 2rem;
   }
 }
+.smaller-container {
+  max-width: $smaller_container_width;
+}
 
 .grey-row {
   border-top: 1px solid #ccc;
@@ -318,13 +322,20 @@ i.info-icon {
 }
 
 /* people */
-.grid.people.full-list {
+.grid.people {
   display: flex;
   flex-wrap: wrap;
   text-align:left;
-  justify-content: flex-start;
   align-items: flex-start;
   align-content: center;
+  justify-content: center;
+
+  .left & {
+    justify-content: flex-start;
+  }
+  &.left {
+    justify-content: flex-start;
+  }
 }
 
 .grid.people {
@@ -355,24 +366,21 @@ i.info-icon {
 
 .people-small, .people-large {
   margin: 2rem auto;
-  .grid.people.full-list {
-    justify-content: center;
-  }
 }
+
+
 .people-small {
-  max-width: 80rem;
-  .small-col {
-    margin: 0 5px 10px 5px;
-    flex-basis: 19%;
+  .person {
+    margin: 0 .5rem 1rem .5rem;
+    flex-basis: 12rem;
     overflow-x: hidden;
     flex-grow: 0;
     flex-shrink: 0;
   }
 }
 .people-large {
-  max-width: $main_container_width;
-  .small-col {
-    margin: 0 5px 10px 5px;
+  .person {
+    margin: 0 .5rem 1rem .5rem;
     flex-basis: 25rem;
     overflow-x: hidden;
     flex-grow: 0;
@@ -400,12 +408,10 @@ i.info-icon {
 }
 
 
-
-
-.small-col .name, .small-col .subtitle {
+.person .name, .person .subtitle {
   font-size: 12px !important;
 }
-.schedule .grid.workshops .small-col {
+.schedule .grid.workshops .person {
   width: 100px;
 }
 
@@ -634,7 +640,7 @@ img.img-2016 {
   margin-bottom: 5rem;
 }
 .page-body-contents {
-  max-width: 80rem;
+  max-width: $smaller_container_width;
   margin: 0 auto;
   > p {
     position: relative;
@@ -710,11 +716,6 @@ section#page-nav {
   }
   section#join-the-conversation {
     .email { font-size: .8em }
-  }
-  .people-small {
-    .small-col {
-      flex-basis: 45%;
-    }
   }
 }
 

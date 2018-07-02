@@ -3,19 +3,23 @@
 
 {% block extra_content %}
 <div class="row">
-  <div class="schedule-toc">
-    <div>Jump to:<br/></div>
-    <!-- <div><a href="#schedule">Schedule</a></div> -->
-    <div><a href="#people">People</a></div>
-    <div><a href="#science-fair">Science Fair</a></div>
-  </div>
+  <section>
+    <div class="schedule-toc">
+      <div>Jump to:<br/></div>
+      <!-- <div><a href="#schedule">Schedule</a></div> -->
+      <div><a href="#people">People</a></div>
+      <div><a href="#science-fair">Science Fair</a></div>
+    </div>
+  </section>
 </div>
 
 <!-- People -->
 <div class="row">
   <section id="people">
     <h3>Coming to Builders Day</h3>
-    {{ macro_people_grid.people_grid(people.filter(is_attending_builders_day=True)) }}
+    <div class="people-small">
+      {{ macro_people_grid.people_grid(people.filter(is_attending_builders_day=True)) }}
+    </div>
   </section>
 </div>
 

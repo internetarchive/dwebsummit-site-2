@@ -14,12 +14,17 @@
               {% if row.short_description %}<div class="science-fair-short-description">{{row.short_description|urlize}}</div>{% endif %}
               {% if row.full_description %}<div>{{row.full_description|safe}}</div>{% endif %}
             </div>
+            <div class="people-small left">
+              {{ macro_people_grid.people_grid(row.people.all()) }}
+            </div>
           </div>
         </div>
       </div>
 
       {% if row.people.all().count() > 0 %}
-        {{ macro_people_grid.people_grid(row.people.all()) }}
+        <div class="people-small left">
+          {{ macro_people_grid.people_grid(row.people.all()) }}
+        </div>
       {% endif %}
     </div>
   {% endfor %}

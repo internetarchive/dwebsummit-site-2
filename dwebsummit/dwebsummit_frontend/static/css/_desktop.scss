@@ -1,9 +1,6 @@
 /* desktop styles */
 
 @media (min-width: $responsive_width) {
-  .grid.people.full-list {
-    justify-content: flex-start;
-  }
   .db-desktop { display: block; }
   .hide-desktop { display: none; }
   .w90-desktop { width: 90%; }
@@ -55,12 +52,6 @@
   .unit.workshop {
     padding: 10px;
     margin-top:10px;
-  }
-  .science-fair {
-    margin-top: 60px;
-  }
-  .science-fair .small-col {
-    flex-basis: 8% !important;
   }
   .page-Learn-More .schedule-toc {
     margin-bottom:30px;
