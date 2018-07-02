@@ -22,3 +22,8 @@ migrate:
 	# Update the database based on model changes
 	# NOTE, you'll need to first run python dwebsummit/manage.py makemigrations
 	python dwebsummit/manage.py migrate
+
+
+regenerate_images:
+	python dwebsummit/manage.py rendervariations 'dwebsummit_admin.page.banner_image' --replace
+	python dwebsummit/manage.py rendervariations 'dwebsummit_admin.person.image' --replace

@@ -21,8 +21,8 @@ class Person(models.Model):
     type = models.CharField(max_length=100, blank=True, default='Participant')
 
     image = StdImageField(variations={
-        'thumbnail': { 'width': 500, 'height': 500, 'crop': True },
-        'bw': { 'width': 200, 'height': 200, 'crop': True }
+        'thumbnail': { 'width': 300, 'height': 300, 'crop': True },
+        #'bw': { 'width': 200, 'height': 200, 'crop': True }
     })
 
     is_attending_builders_day = models.BooleanField(default=False)
@@ -130,7 +130,7 @@ class Page(models.Model):
         'banner': { 'width': 1160, 'height': 420, 'crop': True},
         'banner_d': { 'width': 1160, 'height': 420, 'crop': True, 'effects': ['dither']},
         'grid': { 'width': 370, 'height': 250, 'crop': True},
-        'grid_d': { 'width': 370, 'height': 250, 'crop': True, 'effects': ['dither']}
+        'grid_d': { 'width': 406, 'height': 275, 'crop': True, 'effects': ['dither']}
     }, blank=True, null=True)
 
     body_text = RichTextUploadingField(blank=True, default='')

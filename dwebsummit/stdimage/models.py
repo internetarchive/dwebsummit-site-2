@@ -123,7 +123,7 @@ class StdImageFieldFile(ImageFieldFile):
                 # apply effects
                 for effect in effects:
                     if effect == 'dither':
-                        img = dither_img(img, thresh = 80, brightness=1.4)
+                        img = dither_img(img, thresh = 80, brightness=1)
                     elif effect == 'bw':
                         img = img.convert('L')
                         pass

@@ -7,16 +7,26 @@ import numpy as np
 import numba
 from numba import cuda
 
-def dither_img(img, thresh = 127, brightness = 1.5,
-                contrast = 1.25, sharpness = 1.25):
+
+def dither_img(img, thresh = 127, brightness = 1,
+                contrast = 1, sharpness = 1, resize = False):
+
     img = img.convert('L')
+    if resize:
+        img = img.resize((img.width * 2, img.height * 2))
+
     img = ImageEnhance.Brightness(img).enhance(brightness)
     img = ImageEnhance.Contrast(img).enhance(contrast)
     img = ImageEnhance.Sharpness(img).enhance(sharpness)
+
     m = np.array(img)[:,:]
     m2 = dither(m, thresh = thresh)
     out = Image.fromarray(m2[::-1,:])
     out = out.convert('1')
+
+    if resize:
+        out = out.resize((int(out.width * .5), int(out.height * .5)))
+
     return out
 
 @numba.jit

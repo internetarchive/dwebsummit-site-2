@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'adminsortable2',
     'dwebsummit_frontend',
+    'stdimage'
 ]
 
 MIDDLEWARE = [
