@@ -665,9 +665,25 @@ section#related, .related-grid {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
-  img, canvas {
+  .related-page {
+    display: block;
+  }
+  .related-grid-image-wrapper {
+    width: 406px;
+    height: 275px;
+  }
+  .related-grid-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    background-size: cover;
+    background-blend-mode: screen;
+    background-color: rgba(255, 255, 0, 0);
+    // -webkit-transition: background-color 250ms linear;
+        // -ms-transition: background-color 250ms linear;
+            // transition: background-color 250ms linear;
+    &:hover {
+      background-color: rgba(255, 255, 0, .5);
+    }
   }
 }
 
@@ -680,30 +696,6 @@ section#page-nav {
   flex-direction: columns;
    justify-content: space-between;
   align-items: center;
-}
-
-
-.tint {
-  position: relative;
-  transition: all .3s linear;
-  cursor: pointer;
-}
-
-.tint:hover:before {
-  background: rgba(255,255,0, 0.5);
-}
-
-.tint:before {
-  pointer-events: none;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: none;
-  transition: all .3s linear;
 }
 
 

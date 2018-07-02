@@ -2,25 +2,23 @@
 
 {% macro related_grid(pages, include_people=True) -%}
   {% for page in pages %}
-    <div class="related-page">
-      <a href="{{page.page_url_abs}}">
-        <div class="tint">
-          {% if page.banner_image %}
-            <img class="render-pixel" src="{{page.banner_image.grid_d.url}}" />
-          {% else %}
-            <img src="/static/img/grid-placeholder.svg" />
+    <a class="related-page" href="{{page.page_url_abs}}">
+      <div class="related-grid-image-wrapper">
+        {% if page.banner_image %}
+          <div class="related-grid-image render-pixel" style="background-image:url({{page.banner_image.grid_d.url}});"></div>
+        {% else %}
+          <div class="related-grid-image" style="background-image:url(/static/img/grid-placeholder.svg);"></div>
+        {% endif %}
+      </div>
+      <div class="related-page-title">
+        {{page.title}}
+        {% if include_people %}
+          {% set person_list = page.person_list %}
+          {% if person_list %}
+            <br>{{page.person_list}}
           {% endif %}
-        </div>
-        <div class="related-page-title">
-          {{page.title}}
-          {% if include_people %}
-            {% set person_list = page.person_list %}
-            {% if person_list %}
-              <br>{{page.person_list}}
-            {% endif %}
-          {% endif %}
-        </div>
-      </a>
-    </div>
+        {% endif %}
+      </div>
+    </a>
   {% endfor %}
 {%- endmacro %}
