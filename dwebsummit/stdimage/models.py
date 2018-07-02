@@ -13,6 +13,8 @@ from django.db.models.fields.files import (
 )
 from PIL import Image, ImageOps
 
+#from atkinson.atkinson import dither
+
 from .validators import MinSizeValidator
 
 logger = logging.getLogger()
@@ -71,14 +73,15 @@ class StdImageFieldFile(ImageFieldFile):
                 return variation_name
 
         resample = variation['resample']
+        effects = variation['effects']
+        upscale = variation['upscale']
 
         with storage.open(file_name) as f:
             with Image.open(f) as img:
                 save_kargs = {}
                 file_format = img.format
 
-                # Edited by Richard. Force upscaling for smaller images
-                if True or cls.is_smaller(img, variation):
+                if upscale or cls.is_smaller(img, variation):
                     factor = 1
                     while img.size[0] / factor \
                             > 2 * variation['width'] \
@@ -115,6 +118,12 @@ class StdImageFieldFile(ImageFieldFile):
                             size,
                             resample=resample
                         )
+
+                # apply effects
+                for effect in effects:
+                    if effect == 'bw_dither':
+                        # img = dither(img)
+                        pass
 
                 with BytesIO() as file_buffer:
                     img.save(file_buffer, file_format, **save_kargs)
@@ -169,7 +178,9 @@ class StdImageField(ImageField):
         'width': float('inf'),
         'height': float('inf'),
         'crop': False,
-        'resample': Image.ANTIALIAS
+        'resample': Image.ANTIALIAS,
+        'effects': [],
+        'upscale': True
     }
 
     def __init__(self, verbose_name=None, name=None, variations=None,

@@ -127,6 +127,8 @@ class Page(models.Model):
 
     banner_image = StdImageField(variations={
         'banner': { 'width': 1160, 'height': 420, 'crop': True},
+        'banner_d': { 'width': 1160, 'height': 420, 'crop': True,
+                      'effects': ['bw_dither']},
         'grid': { 'width': 370, 'height': 250, 'crop': True},
         'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
     }, blank=True, null=True)
