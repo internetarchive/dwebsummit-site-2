@@ -5,24 +5,31 @@
 
 {% block body %}
 
-  <div id="banner">
-    <div id="top-section" class="section">
-      <div class="grid">
-        <div class="unit whole">
-          <h1>
-            Decentralized Web Summit 2018<br>
-            Global Visions / Working Code<br>
-            July 31 &ndash; August 2, 2018<br>
-            <a class="register-now" href="https://www.eventbrite.com/e/decentralized-web-summit-2018-tickets-46312003449">→ Register Now</a>
-          </h1>
-        </div>
+<div id="banner">
+  <div id="top-section" class="section">
+    <div class="grid">
+      <div class="unit whole">
+        <h1>
+          Decentralized Web Summit 2018<br>
+          Global Visions / Working Code<br>
+          July 31 &ndash; August 2, 2018<br>
+          <a class="register-now" href="https://www.eventbrite.com/e/decentralized-web-summit-2018-tickets-46312003449">→ Register Now</a>
+        </h1>
       </div>
     </div>
-    <script>
-      document.getElementById('top-section').style.opacity = 0;
-    </script>
   </div>
+  <script>
+    document.getElementById('top-section').style.opacity = 0;
+  </script>
+</div>
 
+<div class="row">
+  <section>
+    <div class="page-body-contents">
+      {{object.body_text|safe}}
+    </div>
+  </section>
+</div>
 
 {% if object.related_pages.count() %}
 <div class="row">
@@ -142,7 +149,7 @@
     <div class="lead-sponsors-grid">
       {% for sponsor in lead_sponsors %}
         <div id="sponsor_{{sponsor.slug}}" class="sponsor lead box">
-          <a href="{{sponsor.url}}">
+          <a href="{{sponsor.url}}" target="_blank">
             <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
           </a>
         </div>
@@ -154,7 +161,7 @@
     <div class="sponsors-grid">
       {% for sponsor in sponsors %}
         <div id="sponsor_{{sponsor.slug}}" class="sponsor box">
-          <a href="{{sponsor.url}}">
+          <a href="{{sponsor.url}}" target="_blank">
             <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
           </a>
         </div>

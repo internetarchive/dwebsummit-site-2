@@ -4,26 +4,6 @@
   .grid.people.full-list {
     justify-content: flex-start;
   }
-  .small-col {
-    flex-basis:15%;
-    margin: 0 8px 25px 8px;
-  }
-  .page-Home .small-col {
-    flex-basis:9%;
-  }
-  .small-col .name, .small-col .subtitle {
-    font-size: 13px !important;
-  }
-  .schedule .small-col {
-    margin: 0 5px 10px 5px;
-    flex-basis: 10%;
-    overflow-x: hidden;
-    flex-grow: 0;
-    flex-shrink: 0;
-  }
-  .schedule .small-col .name, .schedule .small-col .subtitle {
-    font-size: 12px !important;
-  }
   .db-desktop { display: block; }
   .hide-desktop { display: none; }
   .w90-desktop { width: 90%; }
@@ -76,16 +56,11 @@
     padding: 10px;
     margin-top:10px;
   }
-  .grid.workshops {
-
-  }
   .science-fair {
     margin-top: 60px;
   }
   .science-fair .small-col {
     flex-basis: 8% !important;
-  }
-  .page-Science-Fair h2 {
   }
   .page-Learn-More .schedule-toc {
     margin-bottom:30px;
@@ -116,23 +91,19 @@
     margin-bottom: 2rem;
   }
   section.sponsors {
-    img {
-      max-width: 200rem;
-      height: auto;
-    }
-    .box { padding: 0 1rem; }
     .grid { padding-left:5px; }
+    .lead-sponsors-grid, .sponsors-grid {
+      .box { padding: 0 1rem; display: inline-block;}
+    }
     .lead-sponsors-grid {
-      .box { display: inline-block; }
       .sponsor-img {
-        height: 15rem;
+        height: 25rem;
         width: auto;
       }
     }
     .sponsors-grid {
-      .box { display: inline-block; }
       .sponsor-img {
-        height: 7.5rem;
+        height: 10rem;
         width: auto;
       }
     }

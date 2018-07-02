@@ -518,28 +518,25 @@ i.info-icon {
 }
 
 section.sponsors {
-  .lead-sponsors-grid {
+  .lead-sponsors-grid, .sponsors-grid {
     .box {
       margin-bottom: 1rem;
       display: block;
       text-align: center;
     }
     .sponsor-img {
-      height: 13rem;
       width: auto;
       max-width: 100%;
     }
   }
-  .sponsors-grid {
-    .box {
-      margin-bottom: 1rem;
-      display: block;
-      text-align: center;
+  .lead-sponsors-grid {
+    .sponsor-img {
+      height: 13rem;
     }
+  }
+  .sponsors-grid {
     .sponsor-img {
       height: 7rem;
-      width: auto;
-      max-width: 100%;
     }
   }
   .sp-footer {
@@ -596,7 +593,7 @@ img.img-2016 {
   }
   h3 {
     color: white;
-    background-color: $blue;
+    background-color: black;
     position: -webkit-sticky;
     position: sticky;
     top: -1px;
@@ -715,7 +712,11 @@ section#page-nav {
   section#join-the-conversation {
     .email { font-size: .8em }
   }
-
+  .people-small {
+    .small-col {
+      flex-basis: 45%;
+    }
+  }
 }
 
 @import "desktop";

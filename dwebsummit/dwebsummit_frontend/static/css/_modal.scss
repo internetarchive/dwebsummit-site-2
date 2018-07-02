@@ -30,7 +30,6 @@
 }
 .modalInnerEl a {
   word-wrap: break-word;
-  word-break: break-all;
 }
 
 .modal .modal-contents {
@@ -79,8 +78,14 @@ body.open-modal .main-body, body.open-modal footer, body.open-modal header  {
 }
 
 
+@media (max-width: $responsive_width) {
+  .modalInnerEl a {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+}
 
-@media only screen and (min-width: $responsive_width) {
+@media (min-width: $responsive_width) {
   #modal {
     display: flex;
     flex-direction: column;
