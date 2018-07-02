@@ -88,10 +88,17 @@ This project needs `MySQL-python==1.2.5` for database library and `pillowfight` 
 ```
 ssh myserver
 cd path/to/dwebsummit
-make install_compiled
+pip install -r ./requirements_compiled.txt -t ./compiledpackages
 ```
 
 Also do this in your local directory.
+
+Unfortunately, there's one more step. You need to compile this image processing library:
+
+```
+cd stdimage/atkinson
+./build.sh
+```
 
 
 ### Database

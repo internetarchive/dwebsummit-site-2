@@ -9,7 +9,10 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'compiledpackages'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'dwebsummit'))
 
 from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
+try:
+    load_dotenv(find_dotenv())
+except:
+    pass
 
 
 if __name__ == "__main__":

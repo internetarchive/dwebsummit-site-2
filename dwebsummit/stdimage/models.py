@@ -13,8 +13,7 @@ from django.db.models.fields.files import (
 )
 from PIL import Image, ImageOps
 
-#from atkinson.atkinson import dither
-from .hyperdither import dither_img
+from .atkinson.atkinson import dither as dither_img
 
 from .validators import MinSizeValidator
 

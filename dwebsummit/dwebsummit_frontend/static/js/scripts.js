@@ -141,7 +141,7 @@ $(document).ready(function() {
     "algorithm": "atkinson"
   };
   var ditherjs = new DitherJS(options);
-  $('.js-dither').each(function(elem, i) {
+  $('.js-dither-DISABLED').each(function(elem, i) {
     if (elem.complete) {
       setTimeout(10, function() {
         ditherjs.dither(elem);

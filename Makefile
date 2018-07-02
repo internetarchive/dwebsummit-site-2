@@ -13,7 +13,7 @@ build-sass:
 
 build: build-sass
 	# Collect all static files into public directory
-	python dwebsummit/manage.py collectstatic
+	python dwebsummit/manage.py collectstatic --no-input
 
 makemigrations:
 	python dwebsummit/manage.py makemigrations
