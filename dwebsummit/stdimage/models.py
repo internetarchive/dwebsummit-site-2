@@ -14,6 +14,7 @@ from django.db.models.fields.files import (
 from PIL import Image, ImageOps
 
 #from atkinson.atkinson import dither
+from .hyperdither import dither_img
 
 from .validators import MinSizeValidator
 
@@ -121,8 +122,10 @@ class StdImageFieldFile(ImageFieldFile):
 
                 # apply effects
                 for effect in effects:
-                    if effect == 'bw_dither':
-                        # img = dither(img)
+                    if effect == 'dither':
+                        img = dither_img(img, thresh = 80, brightness=1.4)
+                    elif effect == 'bw':
+                        img = img.convert('L')
                         pass
 
                 with BytesIO() as file_buffer:

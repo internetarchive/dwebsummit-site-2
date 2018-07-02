@@ -1,6 +1,9 @@
 install:
 	pip install -r ./dwebsummit/requirements.txt -t ./dwebsummit/sitepackages
 
+install_compiled:
+	pip install -r ./dwebsummit/requirements_compiled.txt -t ./dwebsummit/compiledpackages
+
 serve:
 	python dwebsummit/manage.py runserver
 

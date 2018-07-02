@@ -1,0 +1,7 @@
+# These packages need to be compiled on the platform
+# These can be installed with
+# $ make install_compiled
+MySQL-python==1.2.5
+pillowfight==0.3
+numpy
+numba

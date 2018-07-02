@@ -88,7 +88,7 @@ This project needs `MySQL-python==1.2.5` for database library and `pillowfight` 
 ```
 ssh myserver
 cd path/to/dwebsummit
-pip install -t compiledpackages MySQL-python==1.2.5 pillowfight==0.3
+make install_compiled
 ```
 
 Also do this in your local directory.
