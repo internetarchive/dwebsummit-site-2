@@ -20,8 +20,8 @@
 
   {% if object.people.count() %}
   <div class="row">
-    <section class="full">
-      <div class="people-small">
+    <section class="">
+      <div class="people-small smaller-container">
         {{ macro_people_grid.people_grid(object.people.all()) }}
       </div>
     </section>

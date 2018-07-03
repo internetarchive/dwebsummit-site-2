@@ -15,19 +15,19 @@
 
   {% if people.count() %}
   <div class="row">
-    <section class="full">
+    <section class="">
       <h1>Featured</h1>
-      <div class="people-large">
+      <div class="people-large smaller-container">
         {{ macro_people_grid.people_grid(people.filter(type='Featured')) }}
       </div>
 
       <h1>Presenters</h1>
-      <div class="people-small">
+      <div class="people-small smaller-container">
         {{ macro_people_grid.people_grid(people.filter(type='Participant')) }}
       </div>
 
       <h1>Organizers</h1>
-      <div class="people-small">
+      <div class="people-small smaller-container">
         {{ macro_people_grid.people_grid(people.filter(type='Staff')) }}
       </div>
     </section>
