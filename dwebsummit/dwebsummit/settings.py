@@ -162,7 +162,7 @@ CKEDITOR_CONFIGS = {
         'contentsCss': '/static/css/main.css',
         'toolbar_full': [
             {'name': 'document', 'items': ['Source', '-', 'Preview',]},
-            {'name': 'styles', 'items': ['Styles', 'Format', 'FontSize']},
+            {'name': 'styles', 'items': ['Format', 'FontSize']},
             {'name': 'basicstyles',
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',
