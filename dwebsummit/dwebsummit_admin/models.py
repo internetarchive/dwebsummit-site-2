@@ -164,6 +164,11 @@ class Page(models.Model):
         title = self.title.strip() or 'Untitled page'
         return '/' + self.page_url + ' – ' + title + ''
 
+    def save(self, *args, **kwargs):
+        # Make sure URLS are lowercase
+        self.page_url = self.page_url.lower()
+        return super(Page, self).save(*args, **kwargs)
+
 
 class NavbarLink(models.Model):
     class Meta(object):

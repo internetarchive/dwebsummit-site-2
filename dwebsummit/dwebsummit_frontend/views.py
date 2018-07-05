@@ -60,6 +60,7 @@ class PageDetailView(DetailView):
 
     def get_object(self):
         slug = self.kwargs.get('slug', '')
+        slug = slug.lower()
         return get_object_or_404(Page, page_url=slug, is_published=True)
 
     def get_template_names(self, **kwargs):
