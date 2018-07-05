@@ -114,7 +114,7 @@ OR just download a copy of the production database to your localhost using a too
 
 ### Uploading
 
-See the private repo with deployment scripts.
+If you're Archive staff, see the private repo with deployment scripts.
 
 Alternatively, here is a template for you:
 ```
@@ -128,3 +128,4 @@ rsync -av --delete --exclude={db.sqlite3,*.pyc,./dwebsummit/public/media/*} ./dw
 Internet Archive
 
 Richard Caceres (@rchrd2)
+Mindy Seu (@mind_seu)
