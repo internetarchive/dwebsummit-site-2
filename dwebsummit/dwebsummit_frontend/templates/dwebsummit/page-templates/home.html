@@ -39,7 +39,7 @@
 
     {{
       macro_related_grid.related_grid(
-        object.related_pages.all().order_by('-dwebsummit_admin_page_related_pages.id'),
+        object.related_pages.exclude(is_published=False).order_by('-dwebsummit_admin_page_related_pages.id'),
         False)
      }}
     </div>

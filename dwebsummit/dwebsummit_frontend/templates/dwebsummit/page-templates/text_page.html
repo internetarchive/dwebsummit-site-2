@@ -49,7 +49,7 @@
   {% if object.related_pages.count() %}
   <div class="row">
     <section id="related" class="">
-      {{ macro_related_grid.related_grid(object.related_pages.exclude(page_url='').order_by('-dwebsummit_admin_page_related_pages.id')) }}
+      {{ macro_related_grid.related_grid(object.related_pages.exclude(is_published=False,  page_url='').order_by('-dwebsummit_admin_page_related_pages.id')) }}
     </section>
   </div>
   {% endif %}
