@@ -103,6 +103,7 @@ class TextFieldAdmin(admin.ModelAdmin):
 
 @admin.register(NavbarLink)
 class NavbarLinkAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('title', 'is_featured')
     pass
 
 
