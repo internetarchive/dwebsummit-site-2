@@ -21,7 +21,7 @@
         {% endif %}
         <script src="/static/js/vendor/cash.min.js"></script>
     </head>
-    <body class="page-{{title}}">
+    <body class="page-{{title|replace(" ", "-")}}">
 
         <div id="header-wrapper">
           {% include "dwebsummit/_header.html" %}
