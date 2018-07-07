@@ -88,10 +88,17 @@ This project needs `MySQL-python==1.2.5` for database library and `pillowfight` 
 ```
 ssh myserver
 cd path/to/dwebsummit
-pip install -t compiledpackages MySQL-python==1.2.5 pillowfight==0.3
+pip install -r ./requirements_compiled.txt -t ./compiledpackages
 ```
 
 Also do this in your local directory.
+
+Unfortunately, there's one more step. You need to compile this image processing library:
+
+```
+cd stdimage/atkinson
+./build.sh
+```
 
 
 ### Database
@@ -107,7 +114,7 @@ OR just download a copy of the production database to your localhost using a too
 
 ### Uploading
 
-See the private repo with deployment scripts.
+If you're Archive staff, see the private repo with deployment scripts.
 
 Alternatively, here is a template for you:
 ```
@@ -121,3 +128,4 @@ rsync -av --delete --exclude={db.sqlite3,*.pyc,./dwebsummit/public/media/*} ./dw
 Internet Archive
 
 Richard Caceres (@rchrd2)
+Mindy Seu (@mind_seu)

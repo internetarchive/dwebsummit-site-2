@@ -1,0 +1,5 @@
+# These packages need to be compiled on the platform
+# These can be installed with
+# $ pip install -r requirements_compiled.txt -t compiledpackages
+MySQL-python==1.2.5
+pillowfight==0.3

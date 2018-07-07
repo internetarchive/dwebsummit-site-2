@@ -10,16 +10,18 @@
         <meta property="og:url" content="https://www.decentralizedweb.net">
         <meta property="og:title" content="Decentralized Web Summit 2018: Global Visions / Working Code">
         <meta property="og:description" content="We invite you to join us at the Decentralized Web Summit!"/>
-        <link rel="canonical" href="https://www.decentralizedweb.net">
+        {% if object.page_url %}
+          <link rel="canonical" href="https://www.decentralizedweb.net/{{object.page_url}}/">
+        {% else %}
+          <link rel="canonical" href="https://www.decentralizedweb.net">
+        {% endif %}
         <link rel="stylesheet" href="/static/css/main.css">
-        <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,300italic,400italic' rel='stylesheet' type='text/css'> -->
         {% if page.metadata.noindex %}
           <meta name="robots" content="noindex">
         {% endif %}
-
         <script src="/static/js/vendor/cash.min.js"></script>
     </head>
-    <body class="page-{{title}}">
+    <body class="page-{{title|replace(" ", "-")}}">
 
         <div id="header-wrapper">
           {% include "dwebsummit/_header.html" %}
@@ -31,6 +33,7 @@
 
         {% include "dwebsummit/_footer.html" %}
 
+        <script src="/static/js/vendor/ditherjs.dist.js" type="text/javascript"></script>
         <script src="/static/js/scripts.js" type="text/javascript"></script>
     </body>
 </html>

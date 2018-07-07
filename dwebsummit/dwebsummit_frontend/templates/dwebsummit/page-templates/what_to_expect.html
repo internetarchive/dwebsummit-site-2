@@ -1,19 +1,12 @@
-{% extends 'dwebsummit/layout.html' %}
+{% extends 'dwebsummit/page-templates/text_page.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 
-{% block body %}
-<div class="narrower">
-  <section>
-    <div >
-      <h2>What to Expect</h2>
-      {{page.metadata.what_to_expect_body_text|safe}}
-    </div>
-  </section>
-</div>
+{% block extra_content %}
 
 <div class="narrower">
   <section>
     <div>
-      <h2>Event Outline</h2>
+      <h1>Event Outline</h1>
       <!-- Desktop table -->
       <table class="event-outline-table hide-mobile">
         <thead>

@@ -1,19 +1,60 @@
 {% extends 'dwebsummit/layout.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
 {% block body %}
-<div class="narrower">
-  <section>
-    <div>
-      <h2>{{object.title}}</h2>
+<div class="text-page {{extra_classes}}">
+
+  <section class="full pt0">
+    <h1>{{object.title}}</h1>
+
+    {% if object.banner_image %}
+      <img class="banner-image render-pixel" src="{{object.banner_image.banner_d.url}}" />
+    {% endif %}
+
+    <div class="page-body-contents">
       {{object.body_text|safe}}
     </div>
   </section>
-</div>
 
-<div class="row">
-  <section id="people">
-    {{ macro_people_grid.people_grid(object.people.all()) }}
-  </section>
+
+  {% if object.people.count() %}
+  <div class="row">
+    <section class="">
+      <div class="people-small smaller-container">
+        {{ macro_people_grid.people_grid(object.people.all()) }}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  {% set prev_page = object.prev.first() %}
+  {% if prev_page or object.next_page %}
+  <div class="row">
+    <section id="page-nav" class="full">
+      <div>
+      {% if prev_page %}
+        ← <a href="{{prev_page.page_url_abs}}">{{prev_page.title}}</a>
+      {% endif %}
+      </div>
+      <div>
+      {% if object.next_page %}
+        <a href="{{object.next_page.page_url_abs}}">{{object.next_page.title}}</a> →
+      {% endif %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  {% if object.related_pages.count() %}
+  <div class="row">
+    <section id="related" class="">
+      {{ macro_related_grid.related_grid(object.related_pages.exclude(is_published=False).exclude( page_url='').order_by('-dwebsummit_admin_page_related_pages.id')) }}
+    </section>
+  </div>
+  {% endif %}
+
+  {% block extra_content %}{% endblock %}
+
 </div>
 {% endblock %}

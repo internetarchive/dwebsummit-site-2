@@ -36,11 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'dwebsummit_frontend.apps.CustomStaticFilesConfig',
+
     'ckeditor',
     'ckeditor_uploader',
     'adminsortable2',
     'dwebsummit_frontend',
+    'stdimage'
 ]
 
 MIDDLEWARE = [
@@ -159,11 +161,8 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
         'contentsCss': '/static/css/main.css',
         'toolbar_full': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'document', 'items': ['Source', '-', 'Preview',]},
+            {'name': 'styles', 'items': ['Format', 'FontSize']},
             {'name': 'basicstyles',
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',

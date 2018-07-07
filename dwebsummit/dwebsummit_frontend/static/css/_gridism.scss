@@ -42,7 +42,7 @@
 /* Let people nuke the gutters/padding completely in a couple of ways */
 .no-gutters .unit,
 .unit.no-gutters {
-  padding: 0 !important;
+  padding: 0;
 }
 
 /* Wrapping at a maximum width is optional */

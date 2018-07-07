@@ -17,15 +17,16 @@ class Person(models.Model):
     last_name = models.CharField(max_length=100)
     organization = models.CharField(max_length=255)
     title = models.CharField(max_length=255, blank=True, default='')
-    bio = RichTextUploadingField(blank=True, default='')
     type = models.CharField(max_length=100, blank=True, default='Participant')
-
-    image = StdImageField(variations={
-        'thumbnail': { 'width': 500, 'height': 500, 'crop': True }
-    })
-
     is_attending_builders_day = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
+
+    image = StdImageField(variations={
+        'thumbnail': { 'width': 300, 'height': 300, 'crop': True },
+        #'bw': { 'width': 200, 'height': 200, 'crop': True }
+    })
+
+    bio = RichTextUploadingField(blank=True, default='')
 
     @property
     def name(self):
@@ -127,8 +128,9 @@ class Page(models.Model):
 
     banner_image = StdImageField(variations={
         'banner': { 'width': 1160, 'height': 420, 'crop': True},
+        'banner_d': { 'width': 1160, 'height': 420, 'crop': True, 'effects': ['dither']},
         'grid': { 'width': 370, 'height': 250, 'crop': True},
-        'thumbnail': { 'width': 500, 'height': 500, 'crop': False }
+        'grid_d': { 'width': 406, 'height': 275, 'crop': True, 'effects': ['dither']}
     }, blank=True, null=True)
 
     body_text = RichTextUploadingField(blank=True, default='')
@@ -149,9 +151,23 @@ class Page(models.Model):
         else:
             return '/' + self.page_url + '/'
 
+    @property
+    def person_list(self):
+        """Returns a string representation of the people
+        Uses .values for efficiency
+        """
+        values = self.people.all().values('first_name', 'last_name')
+        names = [ v['first_name'] + ' ' + v['last_name'] for v in values ]
+        return ', '.join(names)
+
     def __unicode__(self):
         title = self.title.strip() or 'Untitled page'
         return '/' + self.page_url + ' – ' + title + ''
+
+    def save(self, *args, **kwargs):
+        # Make sure URLS are lowercase
+        self.page_url = self.page_url.lower()
+        return super(Page, self).save(*args, **kwargs)
 
 
 class NavbarLink(models.Model):

@@ -1,6 +1,9 @@
 install:
 	pip install -r ./dwebsummit/requirements.txt -t ./dwebsummit/sitepackages
 
+install_compiled:
+	pip install -r ./dwebsummit/requirements_compiled.txt -t ./dwebsummit/compiledpackages
+
 serve:
 	python dwebsummit/manage.py runserver
 
@@ -10,7 +13,7 @@ build-sass:
 
 build: build-sass
 	# Collect all static files into public directory
-	python dwebsummit/manage.py collectstatic
+	python dwebsummit/manage.py collectstatic --no-input
 
 makemigrations:
 	python dwebsummit/manage.py makemigrations
@@ -19,3 +22,8 @@ migrate:
 	# Update the database based on model changes
 	# NOTE, you'll need to first run python dwebsummit/manage.py makemigrations
 	python dwebsummit/manage.py migrate
+
+
+regenerate_images:
+	python dwebsummit/manage.py rendervariations 'dwebsummit_admin.page.banner_image' --replace
+	python dwebsummit/manage.py rendervariations 'dwebsummit_admin.person.image' --replace

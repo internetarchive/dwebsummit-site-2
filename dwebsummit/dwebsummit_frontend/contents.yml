@@ -1,11 +1,11 @@
 # This file contains contents pulled from the static site
 # It's one step between being in the CMS and being in the HTML
 
-what_to_expect_body_text: "We'll kick off on <b>Tuesday night, July 31st at 6 PM</b> with an <b>Opening Party at the Internet Archive</b> in San Francisco. Meet the top builders of decentralized tech from around the world at our Science Fair, where you can experience deep conversations and demonstrations with leaders of dozens of decentralized projects.<br>
+what_to_expect_body_text: "We'll kick off on <span>Tuesday night, July 31st at 6 PM</span> with an <span>Opening Party at the Internet Archive</span> in San Francisco. Meet the top builders of decentralized tech from around the world at our Science Fair, where you can experience deep conversations and demonstrations with leaders of dozens of decentralized projects.<br>
 <br>
-Then <b>Wednesday-Thursday, August 1-2, 8 AM-6 PM</b> we move to the historic <b>San Francisco Mint</b>, for the multi-track Decentralized Web Summit with hands-on workshops, technical panels, events exploring the law, policy and governance models that may impact the space, along with both humanitarian and artistic use cases for a new set of tools.<br>
+Then <span>Wednesday-Thursday, August 1-2, 8 AM-6 PM</span> we move to the historic <span>San Francisco Mint</span>, for the multi-track Decentralized Web Summit with hands-on workshops, technical panels, events exploring the law, policy and governance models that may impact the space, along with both humanitarian and artistic use cases for a new set of tools.<br>
 <br>
-Still wanting more?  On <b>Friday, August 3 at 10 AM-5 PM</b>, we'll open the doors of the Internet Archive where we invite you to join us for <b>informal collaboration, plus lunch and a tour.</b>  We'll have tables set up for informal collaborating, hacking, and just hanging out."
+Still wanting more?  On <span>Friday, August 3 at 10 AM-5 PM</span>, we'll open the doors of the Internet Archive where we invite you to join us for <span>informal collaboration, plus lunch and a tour.</span>  We'll have tables set up for informal collaborating, hacking, and just hanging out."
 
 event_outline:
   - cells:
@@ -15,41 +15,41 @@ event_outline:
     - "Fri Aug 3<br>At Internet Archive"
   - cells:
     - ""
-    - "<b>8:00</b><br>Doors open<br>Registration &amp; breakfast"
-    - "<b>8:00</b><br>Doors open<br>Registration &amp; breakfast"
+    - "<span>8:00</span><br>Doors open<br>Registration &amp; breakfast"
+    - "<span>8:00</span><br>Doors open<br>Registration &amp; breakfast"
     - ""
   - cells:
     - ""
-    - "<b>9:00-10:00</b><br>Opening<br>In courtyard"
-    - "<b>9:00-10:30</b><br>Morning sessions I"
+    - "<span>9:00-10:00</span><br>Opening<br>In courtyard"
+    - "<span>9:00-10:30</span><br>Morning sessions I"
     - ""
   - cells:
     - ""
-    - "<b>10:30-Noon</b><br>Morning sessions I"
-    - "<b>11:00-12:30</b><br>Morning sessions II"
-    - "<b>10:00-12:00</b><br>Informal collaboration &amp; meeting"
+    - "<span>10:30-Noon</span><br>Morning sessions I"
+    - "<span>11:00-12:30</span><br>Morning sessions II"
+    - "<span>10:00-12:00</span><br>Informal collaboration &amp; meeting"
   - cells:
     - ""
-    - "<b>12:00</b><br>Lunch"
-    - "<b>12:30</b><br>Lunch"
-    - "<b>12:00</b><br>Lunch"
+    - "<span>12:00</span><br>Lunch"
+    - "<span>12:30</span><br>Lunch"
+    - "<span>12:00</span><br>Lunch"
   - cells:
     - ""
-    - "<b>13:30-15:00</b><br>Afternoon sessions I"
-    - "<b>13:30-15:00</b><br>Afternoon sessions I"
-    - "<b>13:00</b><br>Tour of Archive"
+    - "<span>13:30-15:00</span><br>Afternoon sessions I"
+    - "<span>13:30-15:00</span><br>Afternoon sessions I"
+    - "<span>13:00</span><br>Tour of Archive"
   - cells:
     - ""
-    - "<b>15:30-17:00</b><br>Afternoon Session II"
-    - "<b>15:30-17:00</b><br>Afternoon Session II"
-    - "<b>14:00-17:00</b><br>Informal Collaboration &amp; meeting"
+    - "<span>15:30-17:00</span><br>Afternoon Session II"
+    - "<span>15:30-17:00</span><br>Afternoon Session II"
+    - "<span>14:00-17:00</span><br>Informal Collaboration &amp; meeting"
   - cells:
     - ""
-    - "<b>17:00-18:00</b><br>Sharing<br>In Courtyard"
-    - "<b>17:00-18:00</b><br>Closing<br>In Courtyard"
+    - "<span>17:00-18:00</span><br>Sharing<br>In Courtyard"
+    - "<span>17:00-18:00</span><br>Closing<br>In Courtyard"
     - ""
   - cells:
-    - "<b>18:00-21:00</b><br>Science Fair &amp; Opening reception &amp; registration"
+    - "<span>18:00-21:00</span><br>Science Fair &amp; Opening reception &amp; registration"
     - ""
-    - "<b>18:00-21:00</b><br>Closing Night Party"
+    - "<span>18:00-21:00</span><br>Closing Night Party"
     - ""

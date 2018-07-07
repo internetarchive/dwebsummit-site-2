@@ -126,4 +126,30 @@ $(document).ready(function() {
       showIndex(currIndex);
     }, msPerPage);
   });
+
+  /**
+   * Image effect
+   * https://github.com/danielepiccone/ditherjs
+   */
+  var options = {
+    "step": 1,
+    "palette": [[
+      0, 0, 0],
+      /*[200, 200, 200],*/
+      [255, 255, 255]
+    ],
+    "algorithm": "atkinson"
+  };
+  var ditherjs = new DitherJS(options);
+  $('.js-dither-DISABLED').each(function(elem, i) {
+    if (elem.complete) {
+      setTimeout(10, function() {
+        ditherjs.dither(elem);
+      });
+    } else {
+      elem.onload = function() {
+        ditherjs.dither(elem);
+      }
+    }
+  });
 });
