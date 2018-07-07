@@ -125,7 +125,8 @@ ul.menu {
 }
 
 .header .menu-btn:checked ~ .menu {
-  max-height: 500px;
+  // max-height should be very large. 
+  max-height: 1500px; 
   padding: 2rem 0;
 }
 
