@@ -1,0 +1,41 @@
+{# a macro to render an array of projects  #}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+
+{% macro projects_list(projects, filter_by_builders_day=False) -%}
+{% for row in projects %}
+<div class="science-fair-row">
+  <div class="js-bio-unit">
+    <div class="science-fair-title">{{row.title}}</div>
+    {% if row.short_description %}<div class="science-fair-short-description">{{row.short_description|urlize}}</div>{% endif %}
+    {% if row.full_description %}<div class="science-fair-full-description"><span class="science-fair-read-more">Read more.</span></div>{% endif %}
+
+    <div class="hidden-bio">
+      <div>
+        <div class="modal-name science-fair-title">{{row.title}}</div>
+        <div class="modal-bio">
+          {% if row.short_description %}<div class="science-fair-short-description">{{row.short_description|urlize}}</div>{% endif %}
+          {% if row.full_description %}<div>{{row.full_description|safe}}</div>{% endif %}
+        </div>
+        <div class="people-small left">
+          {% if filter_by_builders_day %}
+            {{ macro_people_grid.people_grid(row.people.filter(is_attending_builders_day=True)) }}
+          {% else %}
+            {{ macro_people_grid.people_grid(row.people.all()) }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if row.people.all().count() > 0 %}
+    <div class="people-small left">
+      {% if filter_by_builders_day %}
+        {{ macro_people_grid.people_grid(row.people.filter(is_attending_builders_day=True)) }}
+      {% else %}
+        {{ macro_people_grid.people_grid(row.people.all()) }}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endfor %}
+{%- endmacro %}

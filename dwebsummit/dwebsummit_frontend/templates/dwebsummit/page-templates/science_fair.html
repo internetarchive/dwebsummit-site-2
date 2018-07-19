@@ -1,5 +1,6 @@
 {% extends 'dwebsummit/page-templates/text_page.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_projects_list.html' as macro_projects_list %}
 
 {% block extra_content %}
 
@@ -7,7 +8,9 @@
 <div class="row">
   <section id="science-fair">
     <h1>Science Fair</h1>
-    {% include 'dwebsummit/_projects_list.html' %}
+    <div class="science-fair">
+      {{macro_projects_list.projects_list(projects)}}
+    </div>
   </section>
 </div>
 
