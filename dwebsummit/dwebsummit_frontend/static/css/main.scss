@@ -338,7 +338,7 @@ i.info-icon {
   }
 }
 
-.grid.people {
+.people {
   img {
     box-sizing: border-box;
     border-radius: 50%;
@@ -388,7 +388,7 @@ i.info-icon {
   }
 }
 
-.grid.people .subtitle, .modal .modal-subtitle {
+.people .subtitle, .modal .modal-subtitle {
   text-align: center;
   font-style: italic;
   color: #aaa;
@@ -407,6 +407,27 @@ i.info-icon {
   display:none;
 }
 
+.people-list.people {
+  .row {
+    display: flex;
+    flex-direction: row;
+    .person-text {
+      flex: 1;
+
+    }
+    .person {
+      flex-basis: 12rem;
+      overflow-x: hidden;
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-right: 2rem;
+    }
+    // .person img {
+    //   height: 20rem;
+    //   width: auto;
+    // }
+  }
+}
 
 .person .name, .person .subtitle {
   font-size: 12px !important;

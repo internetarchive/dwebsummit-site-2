@@ -15,7 +15,7 @@ from .models import Person, Sponsor, TextField, Project, Page, NavbarLink, Foote
 class PersonForm(forms.ModelForm):
     class Meta:
         model = Person
-        exclude = ['is_featured']
+        fields = '__all__'
 
     type = forms.ChoiceField(choices=[
         ('Participant', 'Participant'),
@@ -25,9 +25,9 @@ class PersonForm(forms.ModelForm):
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subtitle', 'type', 'is_attending_builders_day',)
+    list_display = ('name', 'subtitle', 'type', 'is_attending_builders_day', 'is_featured_organizer')
     search_fields = ('first_name', 'last_name')
-    list_filter = ('type', 'is_attending_builders_day',)
+    list_filter = ('type', 'is_attending_builders_day', 'is_featured_organizer')
     form = PersonForm
 
 

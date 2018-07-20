@@ -26,9 +26,14 @@
         {{ macro_people_grid.people_grid(people.filter(type='Participant')) }}
       </div>
 
+      <h1>Featured Organizers</h1>
+      <div class="people-small smaller-container">
+        {{ macro_people_grid.people_list(people.filter(is_featured_organizer=True)) }}
+      </div>
+
       <h1>Organizers</h1>
       <div class="people-small smaller-container">
-        {{ macro_people_grid.people_grid(people.filter(type='Staff')) }}
+        {{ macro_people_grid.people_grid(people.filter(type='Staff', is_featured_organizer=False)) }}
       </div>
     </section>
   </div>

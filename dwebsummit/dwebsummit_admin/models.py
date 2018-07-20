@@ -19,7 +19,6 @@ class Person(models.Model):
     title = models.CharField(max_length=255, blank=True, default='')
     type = models.CharField(max_length=100, blank=True, default='Participant')
     is_attending_builders_day = models.BooleanField(default=False)
-    is_featured = models.BooleanField(default=False)
 
     image = StdImageField(variations={
         'thumbnail': { 'width': 300, 'height': 300, 'crop': True },
@@ -27,6 +26,11 @@ class Person(models.Model):
     })
 
     bio = RichTextUploadingField(blank=True, default='')
+
+    is_featured_organizer = models.BooleanField(default=False,
+                        help_text="Will be highlighted on people page")
+    featured_organizer_text = models.TextField(blank=True, default='',
+                        help_text="Short paragraph. Will be down next to iamge")
 
     @property
     def name(self):
