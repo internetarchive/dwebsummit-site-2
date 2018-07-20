@@ -255,7 +255,7 @@ section#join-the-conversation {
 }
 
 footer {
-  background-color: white;
+  background-color: black;
   color:white;
   border-top: 1px solid #ccc;
   min-height: $header_size;
@@ -266,7 +266,7 @@ footer {
     a { display: block; text-decoration: none; }
   }
   a {
-    color: black;
+    color: white;
     font-weight: lighter;
   }
   padding: 0;
@@ -275,7 +275,6 @@ footer {
 .p2p-wrapper {
   a { color: white; word-break: break-all; }
   line-height: 2rem;
-  background-color: $darkgrey;
   padding: 1.5rem;
   font-size: .7em;
 }
