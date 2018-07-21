@@ -51,7 +51,7 @@ ul.menu {
   overflow: hidden;
   z-index: 10;
   max-height: 0;
-  transition: all .3s ease-out, background .3s ease-out;
+  transition: all .5s ease-out, background .5s ease-out;
   background-color: yellow;
   position: absolute;
   top: 0;
@@ -125,8 +125,8 @@ ul.menu {
 }
 
 .header .menu-btn:checked ~ .menu {
-  // max-height should be very large. 
-  max-height: 1500px; 
+  // max-height should be very large.
+  max-height: 2500px;
   padding: 2rem 0;
 }
 
