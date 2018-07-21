@@ -28,7 +28,7 @@
 
       {% set is_featured_organizers = people.filter(is_featured_organizer=True) %}
       {% if is_featured_organizers.__len__() %}
-      <h1>Featured Organizers</h1>
+      <h1>DWeb 2018 Team</h1>
       <div class="people-small smaller-container">
         {{ macro_people_grid.people_list(is_featured_organizers) }}
       </div>
