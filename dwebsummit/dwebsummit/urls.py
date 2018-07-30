@@ -17,12 +17,16 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
     # url(r'^tinymce/', include('tinymce.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
+
+    # Note, we need to support /qr as a redirect to garden.decentralizedweb.net as long as possible
+    url(r'^qr/(?P<path>.*)$', RedirectView.as_view(url='https://garden.decentralizedweb.net/qr/%(path)s', permanent=False, query_string=True), name='garden-redirect'),
     url(r'', include('dwebsummit_frontend.urls')),
 ]
 
