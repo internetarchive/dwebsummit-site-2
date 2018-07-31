@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', admin.site.urls),
 
-    # Note, we need to support /qr as a redirect to garden.decentralizedweb.net as long as possible
-    url(r'^qr/(?P<path>.*)$', RedirectView.as_view(url='https://garden.decentralizedweb.net/qr/%(path)s', permanent=False, query_string=True), name='garden-redirect'),
+    # Note, we need to support /QR (caps) as a redirect to garden.decentralizedweb.net as long as possible
+    url(r'^(?i)qr/(?P<path>.*)$', RedirectView.as_view(url='https://garden.decentralizedweb.net/QR/%(path)s', permanent=False, query_string=True)),
     url(r'', include('dwebsummit_frontend.urls')),
 ]
 
