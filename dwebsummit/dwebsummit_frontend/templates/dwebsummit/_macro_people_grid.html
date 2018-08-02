@@ -24,11 +24,9 @@
 {% macro people_list(people) -%}
 <div class="people-list people">
   {% for attendee in people %}
-  <div class="row js-bio-unit">
+  <div class="row js-bio-unit pb-light">
     <div class="person ">
       <img class="img-grey" src="{{attendee.image.thumbnail.url}}" />
-      <div class="name">{{attendee.name}}</div>
-      <div class="subtitle">{{attendee.subtitle}}</div>
       <div class="hidden-bio">
         <div>
           <div class="modal-image"><img class=""  src="{{attendee.image.thumbnail.url}}" /></div>
@@ -42,8 +40,10 @@
       </div>
     </div>
     <div class="person-text">
-      {{attendee.featured_organizer_text}}<br>
-      <a href="javascript:return;">Read More</a>
+      <div>{{attendee.name}}</div>
+      <div class="i muted">{{attendee.subtitle}}</div>
+      <div class="i muted">{{attendee.featured_organizer_text}}</div>
+      <a href="javascript:return;"><small>Read More</small></a>
     </div>
   </div>
   {% endfor %}

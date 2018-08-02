@@ -34,10 +34,13 @@
       </div>
       {% endif %}
 
+      {% set organizers = people.filter(type='Staff', is_featured_organizer=False).count()  %}
+      {% if organizers %}
       <h1>Organizers</h1>
       <div class="people-small smaller-container">
-        {{ macro_people_grid.people_grid(people.filter(type='Staff', is_featured_organizer=False)) }}
+        {{ macro_people_grid.people_grid(organizers) }}
       </div>
+      {% endif %}
     </section>
   </div>
   {% endif %}
