@@ -22,7 +22,7 @@
 
   {% block after_top_section %}{% endblock %}
 
-  {% if object.video_set.count() %}
+  {% if object.video_set and object.video_set.count() %}
     <section>
       <h1>Related videos from the summit</h1>
 
