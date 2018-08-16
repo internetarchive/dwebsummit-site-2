@@ -1,0 +1,15 @@
+{% macro embed(object) -%}
+<div class="video-embed">
+  <div class="iframe-wrapper">
+    <iframe
+      src="{{object.video_embed_url}}"
+        width="1280"
+        height="720"
+        frameborder="0"
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
+        allowfullscreen
+    ></iframe>
+  </div>
+</div>
+{%- endmacro %}

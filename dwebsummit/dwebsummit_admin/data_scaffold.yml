@@ -1,4 +1,5 @@
 # Default pages that are added to the CMS
+# Only created if Page.objects.count() == 0 (initialization)
 pages:
   "":
     title: Home
@@ -16,3 +17,6 @@ pages:
   "what-to-expect":
     title: "What to Expect"
     page_template: "what_to_expect.html"
+  "videos":
+    title: "Videos"
+    page_template: "videos.html"

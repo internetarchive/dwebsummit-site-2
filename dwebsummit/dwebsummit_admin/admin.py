@@ -9,7 +9,10 @@ from django import forms
 
 from adminsortable2.admin import SortableAdminMixin
 
-from .models import Person, Sponsor, TextField, Project, Page, NavbarLink, FooterLink
+from .models import (
+    Person, Sponsor, TextField, Project, Page,
+    NavbarLink, FooterLink, Video
+)
 
 
 class PersonForm(forms.ModelForm):
@@ -70,6 +73,7 @@ for root, subdirs, files in os.walk(rootdir):
         ( file, file.replace('_', ' ').replace('.html', '').title() )
         for file in files
     ]
+    available_templates.sort()
 
 
 class PageForm(forms.ModelForm):
@@ -91,7 +95,8 @@ class PageAdmin(admin.ModelAdmin):
     list_display = ('get_page_url', '__unicode__', 'is_published', 'page_template', )
     search_fields = ('page_url', 'title',)
     list_filter = ('is_published',)
-    filter_horizontal = ('people', 'related_pages')
+    # TODO figure out how to get related videos in here
+    filter_horizontal = ('people', 'related_pages',)
 
     def get_page_url(self, obj):
         return obj.page_url or '<home>'
@@ -110,6 +115,20 @@ class NavbarLinkAdmin(SortableAdminMixin, admin.ModelAdmin):
 @admin.register(FooterLink)
 class FooterLinkAdmin(SortableAdminMixin, admin.ModelAdmin):
     pass
+
+
+
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model = Video
+        fields = '__all__'
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    form = VideoForm
+    list_display = ('__unicode__', 'title', 'archive_identifier', 'is_featured')
+    filter_horizontal = ('people', 'related_pages')
+    readonly_fields = ('page_url', )
 
 
 def bootstrap_data():

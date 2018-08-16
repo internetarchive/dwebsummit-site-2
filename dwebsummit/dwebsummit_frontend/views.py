@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, DetailView
 
 from dwebsummit_admin.models import (
-    Person, Sponsor, TextField, Project, Page, FooterLink, NavbarLink
+    Person, Sponsor, TextField, Project, Page, FooterLink, NavbarLink, Video
 )
 
 
@@ -17,14 +17,14 @@ with open(os.path.join(os.path.dirname(__file__), 'contents.yml'), 'r') as strea
 
 
 def build_context_data(context):
-    # context['title'] = self.title.capitalize()
-
+    """This data is available on all templates
+    See WithDataTemplateView below"""
     # Data from the yaml file
     context['page'] = {
         'metadata': yaml_contents
     }
 
-    context['people'] = Person.objects.all().order_by('first_name')
+    context['people'] = Person.objects.all().order_by('first_name').prefetch_related('video_set')
     context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
     context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
     context['text_fields'] = TextField.objects.all()
@@ -33,6 +33,7 @@ def build_context_data(context):
                                             people__is_attending_builders_day=True).distinct().order_by('title')
     context['footer_links'] = FooterLink.objects.all().prefetch_related('page').order_by('sort_order')
     context['navbar_links'] = NavbarLink.objects.all().prefetch_related('page').order_by('sort_order')
+    context['videos'] = Video.objects.all().order_by('page_url')
 
 
 class WithDataTemplateView(TemplateView):
@@ -67,11 +68,32 @@ class PageDetailView(DetailView):
 
     def get_template_names(self, **kwargs):
         return [ 'dwebsummit/page-templates/' + self.object.page_template ]
-        return super(PageDetailView, self).get_template_names(**kwargs)
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(PageDetailView, self).get_context_data(**kwargs)
+        context['title'] = self.object.title.capitalize()
+
+        # Add additional context
+        build_context_data(context)
+        return context
+
+
+class VideoDetailView(DetailView):
+    model = Page
+    slug_url_kwarg = 'page_url'
+
+    def get_object(self):
+        slug = self.kwargs.get('slug', '')
+        slug = slug.lower()
+        return get_object_or_404(Video, page_url=slug)
+
+    def get_template_names(self, **kwargs):
+        return [ 'dwebsummit/page-templates/video.html' ]
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(VideoDetailView, self).get_context_data(**kwargs)
         context['title'] = self.object.title.capitalize()
 
         # Add additional context

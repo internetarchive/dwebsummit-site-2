@@ -1,6 +1,7 @@
 {% extends 'dwebsummit/layout.html' %}
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 {% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
+{% import 'dwebsummit/_macro_video_embed.html' as macro_video_embed %}
 
 {% block body %}
 <div class="text-page">
@@ -12,11 +13,33 @@
       <img class="banner-image render-pixel" src="{{object.banner_image.banner_d.url}}" />
     {% endif %}
 
+    {% block before_body_text %}{% endblock %}
+
     <div class="page-body-contents">
       {{object.body_text|safe}}
     </div>
   </section>
 
+  {% block after_top_section %}{% endblock %}
+
+  {% if object.video_set %}
+    <section>
+      <h1>Related videos from the summit</h1>
+
+      {% for video in object.video_set.all() %}
+        <div>
+          <h4>
+            <a
+              href="{{video.page_url_abs}}"
+              title="View video permalink page"
+            >{{video.title}} &gt;</a>
+          </h4>
+          {{ macro_video_embed.embed(video) }}
+        </div>
+
+      {% endfor %}
+    </section>
+  {% endif %}
 
   {% if object.people.count() %}
   <div class="row">
@@ -28,22 +51,25 @@
   </div>
   {% endif %}
 
-  {% set prev_page = object.prev.first() %}
-  {% if prev_page or object.next_page %}
-  <div class="row">
-    <section id="page-nav" class="full">
-      <div>
-      {% if prev_page %}
-        ← <a href="{{prev_page.page_url_abs}}">{{prev_page.title}}</a>
-      {% endif %}
-      </div>
-      <div>
-      {% if object.next_page %}
-        <a href="{{object.next_page.page_url_abs}}">{{object.next_page.title}}</a> →
-      {% endif %}
-      </div>
-    </section>
-  </div>
+  {# this template is used with other duck-typed classes that don't have the prev field #}
+  {% if object.prev %}
+    {% set prev_page = object.prev.first() %}
+    {% if prev_page or object.next_page %}
+    <div class="row">
+      <section id="page-nav" class="full">
+        <div>
+        {% if prev_page %}
+          ← <a href="{{prev_page.page_url_abs}}">{{prev_page.title}}</a>
+        {% endif %}
+        </div>
+        <div>
+        {% if object.next_page %}
+          <a href="{{object.next_page.page_url_abs}}">{{object.next_page.title}}</a> →
+        {% endif %}
+        </div>
+      </section>
+    </div>
+    {% endif %}
   {% endif %}
 
   {% if object.related_pages.count() %}

@@ -156,6 +156,14 @@ class Page(models.Model):
             return '/' + self.page_url + '/'
 
     @property
+    def has_grid_image(self):
+        return bool(self.banner_image)
+
+    @property
+    def grid_image_url(self):
+        return self.banner_image.grid_d.url
+
+    @property
     def person_list(self):
         """Returns a string representation of the people
         Uses .values for efficiency
@@ -199,3 +207,95 @@ class FooterLink(models.Model):
 
     def __unicode__(self):
         return self.title.strip() or 'Untitled link'
+
+
+class Video(models.Model):
+    class Meta:
+        verbose_name_plural = 'videos'
+
+    title = models.CharField(max_length=255, blank=False, unique=True,
+        help_text='The title of the video. Will also be used to generate the URL.')
+    page_url = models.CharField(max_length=255, blank=False, unique=True,
+                            db_index=True, editable=False,
+                            help_text='This URL is generated from the title')
+    archive_identifier = models.CharField(max_length=255, blank=False,
+        help_text='Used to embed the video. eg. dweb-8_1_18_Front_End_Storiesfromthefield')
+
+    thumbnail = StdImageField(variations={
+        'grid': { 'width': 640, 'height': 360, 'crop': True},
+        'grid_d': { 'width': 640, 'height': 360, 'crop': True, 'effects': ['dither']}
+    }, blank=True, null=True)
+
+    body_text = RichTextUploadingField(blank=True, default='')
+
+    people = models.ManyToManyField(Person, blank=True)
+    related_pages = models.ManyToManyField(Page, blank=True)
+
+    is_featured = models.BooleanField(default=False, help_text='Will be shown at top of page')
+
+    def __unicode__(self):
+        return self.title.strip() or 'Untitled video'
+
+    def save(self, *args, **kwargs):
+        # Generate the page_url for the URL
+        self.page_url = slugify(self.title)
+        return super(Video, self).save(*args, **kwargs)
+
+    @property
+    def video_embed_url(self):
+        return "https://archive.org/embed/" + self.archive_identifier
+
+    @property
+    def has_grid_image(self):
+        return self.thumbnail is not None
+
+    @property
+    def grid_image_url(self):
+        return self.thumbnail.grid_d.url
+
+    @property
+    def page_url_abs(self):
+        return '/videos/' + self.page_url + '/'
+
+    @property
+    def person_list(self):
+        """Returns a string representation of the people
+        Uses .values for efficiency"""
+        values = self.people.all().values('first_name', 'last_name')
+        names = [ v['first_name'] + ' ' + v['last_name'] for v in values ]
+        return ', '.join(names)
+
+    next_prev_cache = None
+    def next_prev(self):
+        """For the video detail page, we link to a next and prev video, to keep the user engaged"""
+        # inefficient, but it only runs on detail page
+        if self.next_prev_cache is None:
+            all_videos = Video.objects.all()
+            match = False
+            next_video = None
+            prev_video = None
+            index = 0
+            for video in all_videos:
+                if video.id == self.id:
+                    next_video = all_videos[(index + 1) % len(all_videos)]
+                    prev_video = all_videos[(index - 1) % len(all_videos)]
+                    match = True
+                    break
+                index = index + 1
+
+            if not match:
+                next_video = all_videos[0]
+                prev_video = all_videos[len(all_videos) - 1]
+
+            self.next_prev_cache = (next_video, prev_video)
+        return self.next_prev_cache
+
+    @property
+    def next_page(self):
+        return self.next_prev()[0]
+
+    @property
+    def prev_page(self):
+        return self.next_prev()[1]
+
+

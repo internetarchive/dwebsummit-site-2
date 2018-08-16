@@ -4,15 +4,24 @@
   <div class="grid people">
   {% for attendee in people %}
     <div class="person js-bio-unit">
-      <img class="img-grey" src="{{attendee.image.thumbnail.url}}" />
+      <img class="img-grey" width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
       <div class="name">{{attendee.name}}</div>
       <div class="subtitle">{{attendee.subtitle}}</div>
       <div class="hidden-bio">
         <div>
-          <div class="modal-image"><img class=""  src="{{attendee.image.thumbnail.url}}" /></div>
+          <div class="modal-image"><img class="" width="300" height="300" src="{{attendee.image.thumbnail.url}}" /></div>
           <div class="modal-name">{{attendee.name}}</div>
           <div class="modal-subtitle">{{attendee.subtitle}}</div>
           <div>{{attendee.bio|safe}}</div>
+          {% if attendee.video_set.all()[0] %}
+            <div>&nbsp;</div>
+            <h3 class="no-bottom-margin">Videos from the summit:</h3>
+            <ul class="modal-video-list">
+              {% for video in attendee.video_set.all() %}
+                <li><a href="{{video.page_url_abs}}">{{video.title}}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -26,16 +35,25 @@
   {% for attendee in people %}
   <div class="row js-bio-unit pb-light">
     <div class="person ">
-      <img class="img-grey" src="{{attendee.image.thumbnail.url}}" />
+      <img class="img-grey" width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
       <div class="hidden-bio">
         <div>
-          <div class="modal-image"><img class=""  src="{{attendee.image.thumbnail.url}}" /></div>
+          <div class="modal-image"><img class="" width="300" height="300" src="{{attendee.image.thumbnail.url}}" /></div>
           <div class="modal-name">{{attendee.name}}</div>
           <div class="modal-subtitle">{{attendee.subtitle}}</div>
           <div>
             <p>{{attendee.featured_organizer_text}}</p>
             {{attendee.bio|safe}}
           </div>
+          {% if attendee.video_set.all()[0] %}
+            <div>&nbsp;</div>
+            <h3 class="no-bottom-margin">Videos from the summit:</h3>
+            <ul class="modal-video-list">
+              {% for video in attendee.video_set.all() %}
+                <li><a href="{{video.page_url_abs}}">{{video.title}}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
       </div>
     </div>

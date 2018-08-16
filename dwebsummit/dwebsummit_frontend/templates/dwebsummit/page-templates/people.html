@@ -2,8 +2,10 @@
 {% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
 {% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
 
+{% set organizers = people.filter(type='Staff', is_featured_organizer=False).count()  %}
+
 {% block body %}
-<div class="text-page {{extra_classes}}">
+<div class="text-page people-page {{extra_classes}}">
 
   <section class="full pt0">
     <h1>{{object.title}}</h1>
@@ -13,30 +15,40 @@
     {% endif %}
   </section>
 
+  <section>
+    <div class="schedule-toc tc">
+      <div>Jump to:<br/></div>
+      <div><a href="#Featured-Speakers">Featured Speakers</a></div>
+      <div><a href="#Presenters">Presenters</a></div>
+      <div><a href="#DWeb-2018-Team">DWeb 2018 Team</a></div>
+      {% if organizers %}<div><a href="#Organizers">Organizers</a></div>{% endif %}
+      <div><a href="#Coming">Coming to DWeb</a></div>
+    </div>
+  </section>
+
   {% if people.count() %}
   <div class="row">
     <section class="">
-      <h1>Featured Speakers</h1>
+      <h1 id="Featured-Speakers">Featured Speakers</h1>
       <div class="people-large smaller-container">
         {{ macro_people_grid.people_grid(people.filter(type='Featured')) }}
       </div>
 
-      <h1>Presenters</h1>
+      <h1 id="Presenters">Presenters</h1>
       <div class="people-small smaller-container">
         {{ macro_people_grid.people_grid(people.filter(type='Participant')) }}
       </div>
 
       {% set is_featured_organizers = people.filter(is_featured_organizer=True) %}
       {% if is_featured_organizers.__len__() %}
-      <h1>DWeb 2018 Team</h1>
+      <h1 id="DWeb-2018-Team">DWeb 2018 Team</h1>
       <div class="people-small smaller-container">
         {{ macro_people_grid.people_list(is_featured_organizers) }}
       </div>
       {% endif %}
 
-      {% set organizers = people.filter(type='Staff', is_featured_organizer=False).count()  %}
       {% if organizers %}
-      <h1>Organizers</h1>
+      <h1 id="Organizers">Organizers</h1>
       <div class="people-small smaller-container">
         {{ macro_people_grid.people_grid(organizers) }}
       </div>
@@ -46,7 +58,7 @@
   {% endif %}
 
   <section>
-    <h1>Coming</h1>
+    <h1 id="Coming">Coming</h1>
     <div class="page-body-contents">
       {{object.body_text|safe}}
     </div>

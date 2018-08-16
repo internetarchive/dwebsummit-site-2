@@ -1,0 +1,62 @@
+{% extends 'dwebsummit/layout.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
+{% import 'dwebsummit/_macro_video_embed.html' as macro_video_embed %}
+
+{% block body %}
+<div class="text-page video-page">
+
+  <section class="full pt0">
+    <h1>{{object.title}}</h1>
+
+    {{ macro_video_embed.embed(object) }}
+
+    <div class="page-body-contents">
+      {{object.body_text|safe}}
+    </div>
+
+  </section>
+
+  {% block after_top_section %}{% endblock %}
+
+  {% if object.people.count() %}
+  <div class="row">
+    <section class="">
+      <div class="people-small smaller-container">
+        {{ macro_people_grid.people_grid(object.people.all()) }}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <section id="page-nav" class="full">
+    <div>
+    {% if object.prev_page %}
+        ← <a href="{{object.prev_page.page_url_abs}}">{{object.prev_page.title}}</a>
+    {% endif %}
+    </div>
+    <div>
+    {% if object.next_page %}
+        <a href="{{object.next_page.page_url_abs}}">{{object.next_page.title}}</a> →
+    {% endif %}
+    </div>
+    </section>
+  </div>
+
+  {% if object.related_pages.count() %}
+  <div class="row">
+    <section id="related" class="">
+      {{ macro_related_grid.related_grid(object.related_pages.exclude(is_published=False).exclude( page_url='').order_by('-dwebsummit_admin_video_related_pages.id')) }}
+    </section>
+  </div>
+  {% endif %}
+
+  <div>
+        <a href="/videos/">Back to all videos</a>
+  </div>
+
+  {% block extra_content %}{% endblock %}
+
+</div>
+{% endblock %}

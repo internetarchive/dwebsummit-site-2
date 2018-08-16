@@ -66,6 +66,8 @@ $(document).ready(function() {
       }
     };
 
+    if (lazyLoad)
+      lazyLoad.update();
   });
 
   /**
@@ -127,29 +129,14 @@ $(document).ready(function() {
     }, msPerPage);
   });
 
-  /**
-   * Image effect
-   * https://github.com/danielepiccone/ditherjs
-   */
-  var options = {
-    "step": 1,
-    "palette": [[
-      0, 0, 0],
-      /*[200, 200, 200],*/
-      [255, 255, 255]
-    ],
-    "algorithm": "atkinson"
-  };
-  var ditherjs = new DitherJS(options);
-  $('.js-dither-DISABLED').each(function(elem, i) {
-    if (elem.complete) {
-      setTimeout(10, function() {
-        ditherjs.dither(elem);
-      });
-    } else {
-      elem.onload = function() {
-        ditherjs.dither(elem);
-      }
-    }
+  /** lazy loading on people page */
+  $('.people-page img').each(function(elem, idx) {
+    var src = elem.getAttribute('src');
+    elem.removeAttribute('src');
+    elem.setAttribute('data-src', src);
+    elem.className = elem.className + ' js-lazy-load';
   });
+
+  var lazyLoad = new LazyLoad({elements_selector: ".js-lazy-load"});
+
 });

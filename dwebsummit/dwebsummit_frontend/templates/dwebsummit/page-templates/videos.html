@@ -1,0 +1,21 @@
+{% extends 'dwebsummit/page-templates/text_page.html' %}
+{% import 'dwebsummit/_macro_people_grid.html' as macro_people_grid %}
+{% import 'dwebsummit/_macro_related_grid.html' as macro_related_grid %}
+
+{% block after_top_section %}
+
+<div class="row">
+    <h1>Keynote Videos</h1>
+    <section id="related" class="">
+        {{ macro_related_grid.related_grid(videos.filter(is_featured=True)) }}
+    </section>
+</div>
+
+
+<div class="row">
+    <h1>All Videos</h1>
+    <section id="related" class="">
+        {{ macro_related_grid.related_grid(videos.filter(is_featured=False)) }}
+    </section>
+</div>
+{% endblock %}
