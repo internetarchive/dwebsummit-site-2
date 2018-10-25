@@ -18,3 +18,19 @@ ExpiresByType application/x-font-ttf "access plus 1 year"
 ExpiresByType application/x-font-opentype "access plus 1 year"
 ExpiresByType application/x-font-woff "access plus 1 year"
 ExpiresByType image/svg+xml "access plus 1 year"
+
+
+<Files ~ "\.inc$">
+Order Allow,Deny
+Deny from All
+</Files>
+
+<Files ~ "\.asp$">
+Order Allow,Deny
+Deny from All
+</Files>
+
+<Files ~ "wp-login\.php$">
+Order Allow,Deny
+Deny from All
+</Files>
