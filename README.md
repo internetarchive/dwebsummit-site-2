@@ -24,12 +24,31 @@ Since this uses local requirements, you need to modify a file called `~/.pydistu
 prefix=
 ```
 
-To install requirements run:
+Make sure you have Mysql installed on your computer. See that step lower in this document.
+
+
+To install pure-python requirements run:
 ```
 make install
 ```
 
+Make sure you installed MySQL on your laptop already. See "Install MySQL on Mac" below.
+And then install the compiled python requirements, too. 
 
+```
+make install_compiled
+```
+
+### Configuration
+
+The app is configured with `.env` files. These are git-ignored, because they are instance-specific and contain database passwords. You may need to create one for your local environment. For example:
+
+Create a file named `.env` and add thise.
+```
+DATABASE_URL=mysql://root:password@localhost/dwebsummit
+```
+
+### Misc python
 Note this is how the initial project was created:
 ```
 PYTHONPATH=sitepackages ./sitepackages/django/bin/django-admin.py startproject dwebsummit
@@ -37,6 +56,8 @@ PYTHONPATH=sitepackages ./sitepackages/django/bin/django-admin.py startproject d
 
 Note, `stdimage` was added to repo, so it could be modified to allow image upscaling. I'd like to fork it and use that later.
 
+
+### Database migrations
 
 If you make changes to the models, you'll need to create migrations and migrate the DB.
 
@@ -65,6 +86,14 @@ In order to simplify the porting process, some of the same structure was used in
 - The frontend templates are written in the Jinja2 language.
 - The routes are defined in the admin with the Page.page_url field.
 
+### Requirements
+
+You need to install `sass`.
+
+```
+npm install -g sass
+```
+
 
 ## Hosting
 
@@ -81,7 +110,7 @@ This project is structured to work on Dreamhost shared hosting:
 
 ### Bootstrapping the server
 
-Some modules contain binary code and need to be compiled on the server itself.
+The pure python requirements are copied over from your local install, but you need to compile some packages on the server itself.
 
 This project needs `MySQL-python==1.2.5` for database library and `pillowfight` for image processing.
 
@@ -90,8 +119,6 @@ ssh myserver
 cd path/to/dwebsummit
 pip install -r ./requirements_compiled.txt -t ./compiledpackages
 ```
-
-Also do this in your local directory.
 
 Unfortunately, there's one more step. You need to compile this image processing library:
 
@@ -110,6 +137,30 @@ Run `make migrate` (eg `python dwebsummit/manage.py migrate`) to initialize the 
 To create the first user run `python dwebsummit/manage.py createsuperuser`.
 
 OR just download a copy of the production database to your localhost using a tool like Sequel Pro.
+
+## Install MySQL on Mac
+
+If you don't have mysql installed, you should install it first: https://dev.mysql.com/downloads/mysql/
+
+And then add this to your `.bash_profile` file:
+
+```
+export PATH=$PATH:/usr/local/mysql/bin
+```
+
+Install this library
+```
+brew install mysql-connector-c
+```
+
+And follow these steps in order to fix python-mysql library installation.
+https://stackoverflow.com/a/52655550
+
+### More MySQL tidbits
+
+- If you installed mysql 8 on your mac, make sure you use "legacy" password mode. See this stack overflow article: https://stackoverflow.com/a/49966020
+
+- A great free mysql gui client is [SequelPro](https://sequelpro.com). You can use this to import/export data and create new databases.
 
 
 ### Uploading
