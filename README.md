@@ -162,6 +162,11 @@ https://stackoverflow.com/a/52655550
 
 - A great free mysql gui client is [SequelPro](https://sequelpro.com). You can use this to import/export data and create new databases.
 
+- You can connect to the remote database with SequelPro by using the SSH tunnel feature.
+
+- 2019-04-09 - I had trouble importing the database exported from Dreamhost (MySQL 5.6 into my local mac install MySQL 8.0.15). I ended up using the CLI `/usr/local/mysql/bin/mysql -u root -p dwebsummit < dwebcamp_prod_2019-04-09.sql`, but after this, SequelPro could no longer open the database.
+
+
 
 ### Uploading
 

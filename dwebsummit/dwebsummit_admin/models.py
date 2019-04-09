@@ -161,7 +161,7 @@ class Page(models.Model):
 
     @property
     def grid_image_url(self):
-        return self.banner_image.grid_d.url
+        return self.banner_image.grid.url
 
     @property
     def person_list(self):
@@ -251,7 +251,7 @@ class Video(models.Model):
 
     @property
     def grid_image_url(self):
-        return self.thumbnail.grid_d.url
+        return self.thumbnail.grid.url
 
     @property
     def page_url_abs(self):

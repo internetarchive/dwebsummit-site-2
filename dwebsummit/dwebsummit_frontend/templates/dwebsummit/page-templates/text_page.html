@@ -10,7 +10,7 @@
     <h1>{{object.title}}</h1>
 
     {% if object.banner_image %}
-      <img class="banner-image render-pixel" src="{{object.banner_image.banner_d.url}}" />
+      <img class="banner-image render-pixel" src="{{object.banner_image.banner.url}}" />
     {% endif %}
 
     {% block before_body_text %}{% endblock %}
