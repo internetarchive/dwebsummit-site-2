@@ -157,7 +157,8 @@ img.js-dither {
 /* banner */
 #banner {
   width: 100%;
-  background-color: black;
+  background: black url('/static/img/meditation-circle-at-sunrise.jpg') no-repeat bottom;
+  background-size: cover;
   position: relative;
   display:block;
   overflow-x:hidden;
