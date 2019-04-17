@@ -201,7 +201,8 @@ section {
 }
 
 .grey-row {
-  border-top: 1px solid #ccc;
+  // border-top: 1px solid #ccc;
+  background-color: #eee;
   &.bottom-pad {
     padding-bottom:2rem;
     margin-bottom:6rem;
