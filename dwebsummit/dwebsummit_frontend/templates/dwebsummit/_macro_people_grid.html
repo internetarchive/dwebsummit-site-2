@@ -2,6 +2,7 @@
 
 {% macro people_grid(people) -%}
   <div class="grid people">
+  {% if attendee %}
   {% for attendee in people %}
     <div class="person js-bio-unit">
       <img class="img-grey" width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
@@ -26,6 +27,7 @@
       </div>
     </div>
   {% endfor %}
+  {% endif %}
   </div>
 {%- endmacro %}
 
