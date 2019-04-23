@@ -8,3 +8,4 @@ db.sqlite3
 /dwebsummit/dwebsummit_frontend/static/css/main.css.map
 /upload.sh
 .env
+.sass-cache
