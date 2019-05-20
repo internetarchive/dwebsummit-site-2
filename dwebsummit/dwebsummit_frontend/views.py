@@ -27,6 +27,7 @@ def build_context_data(context):
     context['people'] = Person.objects.all().order_by('first_name').prefetch_related('video_set')
     context['lead_sponsors'] = Sponsor.objects.filter(type=Sponsor.LEAD_SPONSOR)
     context['sponsors'] = Sponsor.objects.filter(type=Sponsor.REGULAR_SPONSOR)
+    context['inkind_sponsors'] = Sponsor.objects.filter(type=Sponsor.INKIND_SPONSOR)
     context['text_fields'] = TextField.objects.all()
     context['projects'] = Project.objects.filter(is_published=True).order_by('title')
     context['builders_day_projects'] = Project.objects.filter(is_published=True,
