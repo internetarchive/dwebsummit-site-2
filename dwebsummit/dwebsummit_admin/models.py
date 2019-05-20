@@ -68,7 +68,7 @@ class Sponsor(models.Model):
     SPONSOR_TYPES = (
         (REGULAR_SPONSOR, 'Regular Sponsor'),
         (LEAD_SPONSOR, 'Lead Sponsor'),
-        (INKIND_SPONSOR, 'In-Kind Sponsor')
+        (INKIND_SPONSOR, 'In Kind Sponsor')
     )
 
     type = models.CharField(
