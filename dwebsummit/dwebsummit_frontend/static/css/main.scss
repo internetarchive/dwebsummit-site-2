@@ -578,28 +578,38 @@ i.info-icon {
   }
 }
 
-section.sponsors {
-  .lead-sponsors-grid, .sponsors-grid {
-    .box {
-      margin-bottom: 1rem;
-      display: block;
-      text-align: center;
+.sponsors {
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  section {
+    padding-left: 0;
+
+    .sponsors-grid {
+      .box {
+        margin-bottom: 1rem;
+        display: block;
+        text-align: center;
+      }
+      .sponsor-img {
+        width: auto;
+        max-width: 100%;
+      }
     }
-    .sponsor-img {
-      width: auto;
-      max-width: 100%;
+
+    &.lead {
+      .sponsor-img {
+        height: 13rem;
+      }
+    }
+
+    &.regular, &.in-kind {
+      .sponsor-img {
+        height: 7rem;
+      }
     }
   }
-  .lead-sponsors-grid {
-    .sponsor-img {
-      height: 13rem;
-    }
-  }
-  .sponsors-grid {
-    .sponsor-img {
-      height: 7rem;
-    }
-  }
+
   .sp-footer {
     margin-top: 5rem;
     color: black;
