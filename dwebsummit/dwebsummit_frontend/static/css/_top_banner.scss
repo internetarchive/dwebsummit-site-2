@@ -1,0 +1,21 @@
+.top-banner {
+  background-color: yellow;
+  text-align: center;
+
+  .cta {
+    font-weight: bold;
+  }
+
+  a {
+    color: black;
+    display: block;
+    padding: 10px;
+  }
+
+  button {
+    border-color: white;
+    background-color: black;
+    color: yellow;
+    margin-left: 1rem;
+  }
+}
