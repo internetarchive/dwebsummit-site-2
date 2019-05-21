@@ -118,47 +118,23 @@
 <!-- Section I: Sponsors -->
 <div class="row" id="sponsors">
   {% if lead_sponsors|length > 0  %}
-  <section class="lead">
-    <h1>Lead Sponsors</h1>
-    <div class="sponsors-grid">
-      {% for sponsor in lead_sponsors %}
-        <div id="sponsor_{{sponsor.slug}}" class="box">
-          <a href="{{sponsor.url}}" target="_blank">
-            <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
+    {% with section_title="Lead Sponsors", section_class="lead", sponsors=lead_sponsors %}
+      {% include "dwebsummit/_sponsorship_section.html" %}
+    {% endwith %}
   {% endif %}
+
   {% if sponsors|length > 0  %}
-  <section class="regular">
-    <h1>Sponsors</h1>
-    <div class="sponsors-grid">
-      {% for sponsor in sponsors %}
-        <div id="sponsor_{{sponsor.slug}}" class="box">
-          <a href="{{sponsor.url}}" target="_blank">
-            <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
+    {% with section_title="Sponsors", section_class="regular", sponsors=sponsors %}
+      {% include "dwebsummit/_sponsorship_section.html" %}
+    {% endwith %}
   {% endif %}
+
   {% if inkind_sponsors|length > 0  %}
-  <section class="in-kind">
-    <h1>In Kind Sponsors</h1>
-    <div class="sponsors-grid">
-      {% for sponsor in inkind_sponsors %}
-        <div id="sponsor_{{sponsor.slug}}" class="box">
-          <a href="{{sponsor.url}}" target="_blank">
-            <img class="sponsor-img" src="{{sponsor.image.url}}" alt="{{sponsor.title}}" />
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
+    {% with section_title="In Kind Sponsors", section_class="in-kind", sponsors=inkind_sponsors %}
+      {% include "dwebsummit/_sponsorship_section.html" %}
+    {% endwith %}
   {% endif %}
+
   <div class="sp-footer">
     <p>
     Want to become a DWeb Summit Sponsor?  Contact <a href="mailto:dwebcamp@archive.org">dwebcamp@archive.org</a>
