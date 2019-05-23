@@ -5,7 +5,7 @@
   {% if attendee %}
   {% for attendee in people %}
     <div class="person js-bio-unit">
-      <img class="img-grey" width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
+      <img width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
       <div class="name">{{attendee.name}}</div>
       <div class="subtitle">{{attendee.subtitle}}</div>
       <div class="hidden-bio">
@@ -37,7 +37,7 @@
   {% for attendee in people %}
   <div class="row js-bio-unit pb-light">
     <div class="person ">
-      <img class="img-grey" width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
+      <img width="300" height="300" src="{{attendee.image.thumbnail.url}}" />
       <div class="hidden-bio">
         <div>
           <div class="modal-image"><img class="" width="300" height="300" src="{{attendee.image.thumbnail.url}}" /></div>
