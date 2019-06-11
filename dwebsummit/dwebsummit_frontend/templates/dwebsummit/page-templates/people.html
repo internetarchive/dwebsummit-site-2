@@ -32,11 +32,11 @@
         {{ macro_people_grid.people_grid(people.filter(type='Featured')) }}
       </div>
 
-      {% set is_featured_organizers = people.filter(is_featured_organizer=True) %}
-      {% if is_featured_organizers.__len__() %}
+      {% set featured_organizers = people.filter(is_featured_organizer=True) %}
+      {% if featured_organizers.__len__() %}
       <h1 id="DWeb-2018-Team">DWeb 2019 Team</h1>
       <div class="people-small smaller-container">
-        {{ macro_people_grid.people_grid(is_featured_organizers) }}
+        {{ macro_people_grid.people_grid(featured_organizers, is_featured_organizer=True) }}
       </div>
       {% endif %}
     </section>
