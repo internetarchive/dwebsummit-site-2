@@ -4,42 +4,76 @@
   height: $header_size;
   width: 100%;
   z-index: 3;
-  background-color: black;
-  color: white;
-  position: relative;
+  background-color: #ffcd03;
+  color: black;
+  // position: relative;
+  display: flex;
 
   .logo {
-    display: block;
-    float: left;
-    margin-left: 2rem;
+    display: inline-block;
+    // float: left;
+    // margin-left: 2rem;
     text-decoration: none;
-    z-index: 1;
+    // z-index: 1;
+    width: 15%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   a {
-    color: white;
-    &:hover { color: yellow; }
+    color: black;
+    &:hover { color: #b9750e; }
+  }
+
+  .logo-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-container {
+    display: flex;
+    width: 85%;
+  }
+
+  .image-cover {
+    background: rgba(255, 255, 255, 0.75);
+    width: 100%;
+  }
+
+  .logo-image {
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+
+  .site-name {
+    display: none;
+  }
+
+  .header-content {
+    font-size: 2em;
   }
 
   a.header-title {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    .page-Home & {
-      display:none;
-    }
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // .page-Home & {
+    //   display:none;
+    // }
   }
   ul.featured-nav {
-    position: absolute;
-    right: 5.5rem;
-    top: 0;
+    text-align: right;
+    margin-right: 5rem;
     padding: 1.5rem 0;
-    a {
-      text-shadow: 1px 1px rgba(0, 0, 0, 0.63);
-    }
+
     li {
       display: inline-block;
-      margin-right: 1.5rem;
+      margin-left: 1.5rem;
     }
   }
 }
@@ -55,7 +89,7 @@ ul.menu {
   z-index: 10;
   max-height: 0;
   transition: all .5s ease-out, background .5s ease-out;
-  background-color: yellow;
+  background-color: #ffcd03;
   position: absolute;
   top: 0;
   right: 0;
@@ -94,7 +128,7 @@ ul.menu {
 }
 
 .header .menu-icon .navicon {
-  background: #fff;
+  background: #000;
   display: block;
   height: 2px;
   position: relative;
@@ -104,7 +138,7 @@ ul.menu {
 
 .header .menu-icon .navicon:before,
 .header .menu-icon .navicon:after {
-  background: #fff;
+  background: #000;
   content: '';
   display: block;
   height: 100%;
@@ -173,6 +207,9 @@ ul.menu {
   //   color: black;
   //   margin-bottom: 0;
   // }
+  .header .logo {
+    width: 100%;
+  }
 }
 
 

@@ -12,26 +12,35 @@
 
 
 <header class="header">
-  <a class="hide-mobile logo header-title" href="/">
-    DWeb Camp
+  <a class="logo header-title" href="/">
+    <div class="logo-container">
+      <img src="/static/img/logo.svg" class="logo-image" />
+      <span class="site-name">
+        DWeb Camp
+      </span>
+    </div>
   </a>
-  <a class="hide-desktop logo header-title" href="/">
-    DWeb Camp
-  </a>
+  <div class="image-container">
+    <div class="image-cover">
+      <ul class="hide-mobile featured-nav">
+        {% for link in navbar_links %}
+          {% if link.is_featured %}
+            <li>{{render_link(link)}}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <ul class="menu">
+        {% for link in navbar_links %}
+          <li>{{render_link(link)}}</li>
+        {% endfor %}
+      </ul>
+      <div class="header-content">
+        July 18-21, 2019 <a href="#" class="arrow-link">Register</a>
+      </div>
+    </div>
+  </div>
   <input class="menu-btn" type="checkbox" id="menu-btn"  aria-label="Menu Button" />
   <label class="menu-icon" for="menu-btn">
     <span class="navicon"></span>
   </label>
-  <ul class="hide-mobile featured-nav">
-    {% for link in navbar_links %}
-      {% if link.is_featured %}
-        <li>{{render_link(link)}}</li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <ul class="menu">
-    {% for link in navbar_links %}
-      <li>{{render_link(link)}}</li>
-    {% endfor %}
-  </ul>
 </header>
