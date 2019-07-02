@@ -10,17 +10,14 @@
   display: flex;
 
   .logo {
-    display: inline-block;
-    // float: left;
-    // margin-left: 2rem;
     text-decoration: none;
-    // z-index: 1;
     width: 15%;
     height: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffcd03;
   }
 
   a {
@@ -33,13 +30,16 @@
     height: 100%;
   }
 
+  .logo-container .site-name {
+    display: none;
+  }
+
   .image-container {
     display: flex;
     width: 85%;
   }
 
   .image-cover {
-    background: rgba(255, 255, 255, 0.75);
     width: 100%;
   }
 
@@ -56,6 +56,7 @@
 
   .header-content {
     font-size: 2em;
+    margin: 0 3rem;
   }
 
   a.header-title {
@@ -70,6 +71,7 @@
     text-align: right;
     margin-right: 5rem;
     padding: 1.5rem 0;
+    margin-bottom: 0;
 
     li {
       display: inline-block;
@@ -161,7 +163,7 @@ ul.menu {
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
+.header .menu-btn:checked ~ .image-container .menu {
   // max-height should be very large.
   max-height: 2500px;
   padding: 2rem 0;
@@ -189,16 +191,29 @@ ul.menu {
 
 .page-Home .header {
   background-color: transparent;
-  position:absolute;
-  z-index:1000;
   width:100%;
+  height: 250px;
   box-shadow: initial;
 
   & .menu-icon .navicon,
   & .menu-icon .navicon:before,
   & .menu-icon .navicon:after {
-    background: #fff;
+    background: black;
   }
+}
+
+.page-Home .image-container {
+  background-image: url('/static/img/meditation-circle-at-sunrise.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-Home .image-cover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.page-Home .header .header-content {
+  font-size: 60px;
 }
 
 /* Mobile-only styles */
@@ -209,6 +224,14 @@ ul.menu {
   // }
   .header .logo {
     width: 100%;
+  }
+
+  .header .image-container {
+    width: auto;
+  }
+
+  .header .header-content {
+    display: none;
   }
 }
 

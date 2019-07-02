@@ -84,14 +84,13 @@ code, pre {
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
   &:hover {}
 }
 
-.a-style {
-  background: url('/static/img/moving-underline.gif') repeat-x;
-  background-position: 0 100%;
+.a-style::before {
+  content: "\2192";
 }
 
 p {
@@ -165,12 +164,13 @@ img.js-dither {
 
 /* banner */
 #banner {
+  display: none;
   min-height: 300px;
   width: 100%;
   background: black url('/static/img/meditation-circle-at-sunrise.jpg') no-repeat bottom;
   background-size: cover;
   position: relative;
-  display:block;
+  // display:block;
   overflow-x:hidden;
 }
 #banner .section {
@@ -623,8 +623,12 @@ i.info-icon {
 
   .sp-footer {
     margin-top: 5rem;
-    color: black;
+    // color: black;
   }
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .img-2016-wrapper {
@@ -789,6 +793,10 @@ section#related, .related-grid {
       padding-top: 275px / 407px * 100%;
     }
   }
+}
+
+.arrow-link::before {
+  content: "\2192";
 }
 
 .related-page-title {
