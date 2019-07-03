@@ -57,7 +57,7 @@
 {% endif %}
 
 <!-- Section H: Email/Slack -->
-<div class="row grey-row">
+<div class="row">
   <section id="join-the-conversation" class="smaller-container">
     <h1>Join the Conversation</h1>
     <table>
@@ -116,7 +116,7 @@
 <!-- End Section H -->
 
 <!-- Section I: Sponsors -->
-<div class="row sponsors">
+<div class="row sponsors white-row">
   {% if lead_sponsors|length > 0  %}
     {% with section_title="Lead Sponsors", section_class="lead", sponsors=lead_sponsors %}
       {% include "dwebsummit/_sponsorship_section.html" %}

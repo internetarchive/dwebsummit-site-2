@@ -6,10 +6,12 @@
         <title>DWeb Camp</title>
         <meta name="description" content="DWeb Camp" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="https://www.dwebcamp.org/static/img/fb-dwebcamp-1.png" />
+        <meta property="og:image" content="https://www.dwebcamp.org/static/img/fb-dwebcamp.png" />
         <meta property="og:url" content="https://www.dwebcamp.org" />
         <meta property="og:title" content="DWeb Camp" />
         <meta property="og:description" content="We invite you to join us at the DWeb Camp!" />
+        {% include "dwebsummit/_favicons.html" %}
+        <link rel="manifest" href="/static/manifest.json">
         {% if object.page_url %}
           <link rel="canonical" href="https://www.dwebcamp.org/{{object.page_url}}/">
         {% else %}
