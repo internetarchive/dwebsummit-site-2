@@ -19,13 +19,6 @@ $mainfont: 'Stabil Grotesk', sans-serif;
 $darkgrey: #111;
 $lightdarkgrey: #666;
 
-
-// @font-face {
-//   font-family: 'ExecuReg';
-//   src: url('/static/fonts/ExecuReg.otf') format('opentype'),
-//       url('/static/fonts/ExecuReg.otf?#iefix') format('embedded-opentype');
-// }
-
 @font-face {
   font-family: "Stabil Grotesk";
   src:
@@ -147,7 +140,6 @@ p {
 
 img.render-pixel {
   image-rendering: crisp-edges;
-  // image-rendering: pixelated;
 }
 
 img.responsive {
@@ -172,7 +164,6 @@ img.js-dither {
   background: black url('/static/img/meditation-circle-at-sunrise.jpg') no-repeat bottom;
   background-size: cover;
   position: relative;
-  // display:block;
   overflow-x:hidden;
 }
 #banner .section {
@@ -213,7 +204,6 @@ section {
 }
 
 .grey-row, .white-row {
-  // border-top: 1px solid #ccc;
   color: black;
   padding-bottom: 2rem;
   a {
@@ -282,10 +272,6 @@ section#join-the-conversation {
     a { @extend .a-style; }
   }
 }
-
-// #footer-wrapper {
-//   margin-top: 6rem;
-// }
 
 footer {
   background-color: black;
@@ -439,10 +425,8 @@ i.info-icon {
   a { text-decoration: underline; }
 }
 .video-embed {
-  // margin-bottom: 4rem;
   max-width: 1280px;
   margin: 0 auto 4rem auto;
-  // height: 720px;
   .iframe-wrapper {
     position: relative;
     overflow: hidden;
@@ -483,10 +467,6 @@ i.info-icon {
       flex-shrink: 0;
       margin-right: 2rem;
     }
-    // .person img {
-    //   height: 20rem;
-    //   width: auto;
-    // }
   }
 }
 
@@ -639,7 +619,6 @@ i.info-icon {
 
   .sp-footer {
     margin-top: 5rem;
-    // color: black;
   }
 }
 
@@ -731,7 +710,6 @@ img.img-2016 {
 .banner-image {
   width: 100%;
   height: auto;
-  // padding: 0 2rem 0 2rem;
   margin-top: 0;
   margin-bottom: 5rem;
 }
@@ -754,7 +732,6 @@ img.img-2016 {
     padding-top: 1rem;
     padding-bottom: 0rem;
     max-width: 100%;
-    // left: -10%;
     height: auto !important;
   }
   .page-About & {
@@ -775,10 +752,6 @@ section#related, .related-grid {
     background-repeat: no-repeat;
     background-blend-mode: screen;
     background-color: rgba(255, 255, 0, 0);
-    // -webkit-transition: background-color 250ms linear;
-        // -ms-transition: background-color 250ms linear;
-            // transition: background-color 250ms linear;
-
     /* for ie */
     width: 407px;
     height: 275px;
