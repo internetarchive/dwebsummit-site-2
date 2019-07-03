@@ -4,7 +4,7 @@
   height: $header_size;
   width: 100%;
   z-index: 3;
-  background-color: #ffcd03;
+  background-color: $color_sun;
   color: black;
   display: flex;
 
@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffcd03;
+    background-color: $color_sun;
   }
 
   a {
@@ -105,7 +105,7 @@ ul.menu {
   z-index: 10;
   max-height: 0;
   transition: all .5s ease-out, background .5s ease-out;
-  background-color: #ffcd03;
+  background-color: $color_sun;
   position: absolute;
   top: 0;
   right: 0;
