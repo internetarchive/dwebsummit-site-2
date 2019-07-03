@@ -1,5 +1,5 @@
-$header_size: 125px;
-$responsive_width: 512px;
+$header_size: 13rem;
+$responsive_width: 768px;
 $main_container_width: 130rem;
 $smaller_container_width: 80rem;
 $medium_container_width: 110rem;
@@ -86,7 +86,9 @@ code, pre {
 a {
   color: white;
   text-decoration: none;
-  &:hover {}
+  &:hover {
+    color: #b9750e;
+  }
 }
 
 .a-style::before {
@@ -210,17 +212,31 @@ section {
   max-width: $smaller_container_width;
 }
 
-.grey-row {
+.grey-row, .white-row {
   // border-top: 1px solid #ccc;
-  background-color: #eee;
-  &.bottom-pad {
-    padding-bottom:2rem;
-    margin-bottom:6rem;
+  color: black;
+  padding-bottom: 2rem;
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
+.bottom-pad {
+  padding-bottom:2rem;
+  margin-bottom:6rem;
+}
 
+.grey-row {
+  background-color: #eee;
+}
 
+.white-row {
+  background-color: white;
+}
 
 .location-address {
   margin-bottom: 3rem;
@@ -267,9 +283,9 @@ section#join-the-conversation {
   }
 }
 
-#footer-wrapper {
-  margin-top: 6rem;
-}
+// #footer-wrapper {
+//   margin-top: 6rem;
+// }
 
 footer {
   background-color: black;

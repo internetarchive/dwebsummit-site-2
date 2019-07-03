@@ -11,9 +11,8 @@
 
   .logo {
     text-decoration: none;
-    width: 15%;
     height: 100%;
-
+    flex: 0 0 $header_size;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +21,10 @@
 
   a {
     color: black;
-    &:hover { color: #b9750e; }
+    &:hover {
+      text-decoration: underline;
+      color: black;
+    }
   }
 
   .logo-container {
@@ -36,7 +38,7 @@
 
   .image-container {
     display: flex;
-    width: 85%;
+    flex-grow: 1;
   }
 
   .image-cover {
@@ -46,8 +48,13 @@
   .logo-image {
     width: 100%;
     height: 100%;
-    -webkit-transform: rotate(-15deg);
-    transform: rotate(-15deg);
+    // -webkit-transform: rotate(-15deg);
+    // transform: rotate(-15deg);
+
+    animation-name:            rotate;
+    animation-duration:        5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
   }
 
   .site-name {
@@ -59,14 +66,6 @@
     margin: 0 3rem;
   }
 
-  a.header-title {
-    // height: 100%;
-    // display: flex;
-    // align-items: center;
-    // .page-Home & {
-    //   display:none;
-    // }
-  }
   ul.featured-nav {
     text-align: right;
     margin-right: 5rem;
@@ -80,6 +79,17 @@
   }
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
 
 /* menu */
 
@@ -191,8 +201,7 @@ ul.menu {
 
 .page-Home .header {
   background-color: transparent;
-  width:100%;
-  height: 250px;
+  height:25rem;
   box-shadow: initial;
 
   & .menu-icon .navicon,
@@ -200,88 +209,43 @@ ul.menu {
   & .menu-icon .navicon:after {
     background: black;
   }
+
+  .image-container {
+    background-image: url('/static/img//mflookoutview.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .header-content {
+    font-size: 60px;
+  }
+
+  .logo {
+    flex: 0 0 25rem;
+  }
 }
 
-.page-Home .image-container {
-  background-image: url('/static/img/meditation-circle-at-sunrise.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.page-Home .image-cover {
-  background: rgba(255, 255, 255, 0.75);
-}
-
-.page-Home .header .header-content {
-  font-size: 60px;
-}
 
 /* Mobile-only styles */
 @media (max-width: $responsive_width) {
-  // .header li a {
-  //   color: black;
-  //   margin-bottom: 0;
-  // }
+  .page-Home {
+    .header {
+      .logo {
+        flex-grow: 1;
+      }
+    }
+  }
+
   .header .logo {
-    width: 100%;
+    flex-grow: 1;
   }
 
   .header .image-container {
-    width: auto;
-  }
-
-  .header .header-content {
     display: none;
   }
 }
 
-
 /* desktop-only */
 @media (min-width: $responsive_width) {
-  // .header li {
-  //   float: left;
-  // }
-  //
-  // .header .menu {
-  //   clear: none;
-  //   // float: right;
-  //   max-height: none;
-  //   background-color: black;
-  // }
-  // .header .menu-icon {
-  //   //display: none;
-  // }
-  // .header {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-content:center;
-  //   box-shadow: initial;
-  //
-  //   .page-Home & {
-  //     box-shadow: initial;
-  //   }
-  // }
-  // .page-Home #header-wrapper {
-  //   position:absolute;
-  //   z-index:1000;
-  //   width:100%;
-  // }
-  // .page-Home header .logo {
-  //   // important to be visibility:hidden to not break flex layout
-  //   visibility: hidden;
-  // }
-  // .page-Home header {
-  //   background-color: transparent;
-  // }
-  //
-  // .header {
-  //   height: $header_size;
-  //   width: 100%;
-  //   display:flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  // }
-  // .header li {
-  //   padding: 0;
-  // }
+
 }
