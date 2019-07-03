@@ -10,6 +10,8 @@
         <meta property="og:url" content="https://www.dwebcamp.org" />
         <meta property="og:title" content="DWeb Camp" />
         <meta property="og:description" content="We invite you to join us at the DWeb Camp!" />
+        {% include "dwebsummit/_favicons.html" %}
+        <link rel="manifest" href="/static/manifest.json">
         {% if object.page_url %}
           <link rel="canonical" href="https://www.dwebcamp.org/{{object.page_url}}/">
         {% else %}
