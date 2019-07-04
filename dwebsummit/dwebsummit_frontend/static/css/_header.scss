@@ -79,19 +79,31 @@
 
 @keyframes rotate {
   0% {
-    transform: rotate(-45deg);
+    transform: rotate(-10deg);
   }
   25% {
-    transform: rotate(15deg);
+    transform: rotate(110deg);
   }
-  50% {
-    transform: rotate(-25deg);
+  32% {
+    transform: rotate(75deg);
   }
-  75% {
-    transform: rotate(45deg);
+  45% {
+    transform: rotate(200deg);
+  }
+  53% {
+    transform: rotate(160deg);
+  }
+  70% {
+    transform: rotate(290deg);
+  }
+  78% {
+    transform: rotate(260deg);
+  }
+  90% {
+    transform: rotate(380deg);
   }
   100% {
-    transform: rotate(-45deg);
+    transform: rotate(350deg)
   }
 }
 
