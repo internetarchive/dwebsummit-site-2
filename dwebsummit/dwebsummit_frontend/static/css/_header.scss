@@ -215,9 +215,13 @@ ul.menu {
   }
 
   .image-container {
-    background-image: url('/static/img//mflookoutview.jpg');
+    background-image: url('/static/img/header.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .image-cover {
+    background-color: rgba(255,255,255,0.1);
   }
 
   .header-content {
