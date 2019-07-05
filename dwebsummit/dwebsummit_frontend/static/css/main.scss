@@ -257,6 +257,16 @@ section {
 }
 
 section#join-the-conversation {
+  .col-container {
+    &>div {
+      display: inline-block;
+      vertical-align: top;
+
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
   td {
     padding-bottom: 2rem;
     &:first {
