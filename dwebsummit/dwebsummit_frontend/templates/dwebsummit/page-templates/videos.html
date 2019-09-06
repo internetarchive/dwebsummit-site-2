@@ -5,17 +5,9 @@
 {% block after_top_section %}
 
 <div class="row">
-    <h1>Keynote Videos</h1>
+    <h1>Lightning Talks</h1>
     <section id="related" class="">
-        {{ macro_related_grid.related_grid(videos.filter(is_featured=True)) }}
-    </section>
-</div>
-
-
-<div class="row">
-    <h1>All Videos</h1>
-    <section id="related" class="">
-        {{ macro_related_grid.related_grid(videos.filter(is_featured=False)) }}
+        {{ macro_related_grid.related_grid(videos) }}
     </section>
 </div>
 {% endblock %}
